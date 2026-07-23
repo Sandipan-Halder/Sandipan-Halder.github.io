@@ -13,6 +13,10 @@
             --card-surface: #ffffff;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif; 
             line-height: 1.6; 
@@ -20,14 +24,21 @@
             background-color: var(--bg-primary); 
             max-width: 780px; 
             margin: 0 auto; 
-            padding: 3rem 2rem;
+            padding: 0 2rem 3rem 2rem;
             -webkit-font-smoothing: antialiased;
         }
 
-        header { 
-            border-bottom: 1px solid var(--border-clean); 
-            padding-bottom: 2rem; 
-            margin-bottom: 3.5rem; 
+        /* PREMIUM FROSTED FIXED NAVIGATION LAYER FOR BACK NAVIGATION */
+        .sticky-back-wrapper {
+            position: sticky;
+            top: 0;
+            background-color: rgba(251, 251, 253, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-clean);
+            margin: 0 -2rem 3.5rem -2rem;
+            padding: 1.5rem 2rem;
         }
         
         .back-nav { 
@@ -35,10 +46,20 @@
             font-weight: 600; 
             letter-spacing: 0.5px; 
             text-transform: uppercase;
-            margin-bottom: 2rem;
         }
-        .back-nav a { color: var(--text-muted); text-decoration: none; transition: color 0.2s ease; }
-        .back-nav a:hover { color: var(--text-main); }
+        .back-nav a { 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            transition: color 0.2s ease; 
+        }
+        .back-nav a:hover { 
+            color: var(--text-main); 
+        }
+        
+        header { 
+            padding-top: 1rem;
+            margin-bottom: 2.5rem; 
+        }
         
         h1 { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.5px; margin: 0 0 0.5rem 0; line-height: 1.2; }
         .post-meta { font-family: monospace; font-size: 0.8rem; color: #86868b; margin-bottom: 2rem; text-transform: uppercase; }
@@ -60,12 +81,14 @@
 </head>
 <body>
 
+    <!-- STICKY BACK BAR LAYER: Keeps back button permanently locked on screen -->
+    <div class="sticky-back-wrapper">
+        <div class="back-nav">
+            <a href="javascript:void(0);" onclick="window.history.back();">← Back to Dashboard</a>
+        </div>
+    </div>
+
     <header>
-     <div class="back-nav">
-         <a href="javascript:void(0);" onclick="window.history.back();">← Back to Dashboard</a>
-     </div>
-
-
         <h1>Parameter Boundary Failures in 1D Ideal Fluid Codes</h1>
         <div class="post-meta">LOG REVISION: LOG_02 // DATELINE: 02 MAY 2026</div>
     </header>
