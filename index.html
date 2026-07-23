@@ -14,6 +14,7 @@
             --card-surface: #ffffff;
         }
 
+        /* Hardcode smooth physics scaling across all view shifts */
         html {
             scroll-behavior: smooth;
         }
@@ -29,7 +30,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* PREMIUM GUI STICKY NAV LAYER */
+        /* FIXED STICKY NAVIGATION HEADER WITH PREMIUM MICRO-EASE */
         .sticky-nav-wrapper {
             position: sticky;
             top: 0;
@@ -54,15 +55,17 @@
         nav a { 
             color: var(--text-muted); 
             text-decoration: none; 
-            transition: all 0.2s ease; 
             padding-bottom: 6px;
             border-bottom: 2px solid transparent;
+            /* Cubic bezier matching Apple desktop UI system curves */
+            transition: color 0.25s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.25s cubic-bezier(0.25, 1, 0.5, 1);
         }
         
         nav a:hover { 
             color: var(--text-main); 
         }
 
+        /* Smooth dynamic sliding active accent rule */
         nav a.active {
             color: var(--text-main);
             border-bottom-color: var(--text-main);
@@ -97,7 +100,7 @@
             letter-spacing: -0.1px;
         }
 
-        /* Geometric Protection Anchor: Account for Fixed sticky menu thickness */
+        /* Strict geometric offset rule to account for fixed bar elevation profile */
         .section-anchor {
             scroll-margin-top: 7rem;
         }
@@ -114,7 +117,6 @@
             padding-bottom: 0.75rem;
         }
 
-        /* Visual Project Matrix */
         .pictorial-matrix { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); 
@@ -183,7 +185,6 @@
             text-transform: uppercase;
         }
 
-        /* Editorial Article Stream */
         .editorial-stream { 
             display: flex; 
             flex-direction: column; 
@@ -233,7 +234,7 @@
 </head>
 <body>
 
-    <!-- Unified UI Navigation Matrix -->
+    <!-- HIGH-INTERACTION NAVIGATION BAR LAYOUT -->
     <div class="sticky-nav-wrapper">
         <nav id="main-nav">
             <a href="#hero-top" id="nav-portfolio" class="active">Portfolio</a>
@@ -242,7 +243,7 @@
         </nav>
     </div>
 
-    <!-- The Absolute Top Global Element -->
+    <!-- MAIN IDENTITY WRAPPER -->
     <header id="hero-top" class="section-anchor">
         <div style="width: 100%; height: 280px; border-radius: 12px; overflow: hidden; margin-bottom: 2.5rem; border: 1px solid var(--border-clean);">
             <img src="hero_landscape.jpg" alt="Research Workspace" style="width: 100%; height: 100%; object-fit: cover;">
@@ -256,8 +257,9 @@
             </p>
         </div>
     </header>
+
     <main>
-        <!-- MASTER UNIFIED RESEARCH BLOCK ENVELOPE -->
+        <!-- MASTER UNIFIED RESEARCH TARGET ZONE -->
         <div id="research-target" class="section-anchor">
             
             <h2>Software Suites & Code Architecture</h2>
@@ -305,7 +307,7 @@
                     </div>
                 </a>
 
-                <!-- Card 4 (Height Addition) -->
+                <!-- Card 4 -->
                 <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
                     <div class="matrix-card">
                         <div class="card-canvas" style="background: linear-gradient(135deg, #3a3a3c 0%, #141416 100%);">
@@ -319,7 +321,7 @@
                     </div>
                 </a>
 
-                <!-- Card 5 (Height Addition) -->
+                <!-- Card 5 -->
                 <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
                     <div class="matrix-card">
                         <div class="card-canvas" style="background: linear-gradient(135deg, #2c2c2e 0%, #444446 100%);">
@@ -364,7 +366,7 @@
                     </div>
                 </a>
 
-                <!-- Entry 02 (Height Addition) -->
+                <!-- Entry 02 -->
                 <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: block;">
                     <div class="editorial-row">
                         <div class="editorial-main">
@@ -380,8 +382,7 @@
             </div>
         </div>
     </main>
-    <!-- SEPARATION BUFFER & CONTACT AREA -->
-    <!-- The padding-bottom creates the scrolling headroom so the page can lift fully -->
+    <!-- SEPARATION BUFFER & INSTITUTIONAL FOOTER CONTROLLER -->
     <div style="padding-top: 15rem; padding-bottom: 25rem;">
         <footer id="contact-target" class="section-anchor">
             <div class="footer-contact">
@@ -392,35 +393,48 @@
         </footer>
     </div>
 
-    <!-- ADVANCED HIGH-PRECISION TRACKING ENGINE -->
+    <!-- HIGH-FREQUENCY GEOMETRIC SCROLL ENGINE -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.section-anchor');
             const navLinks = document.querySelectorAll('#main-nav a');
+            
+            // Hardcoded section threshold tags
+            const topSection = document.getElementById('hero-top');
+            const researchSection = document.getElementById('research-target');
+            const contactSection = document.getElementById('contact-target');
 
-            // High accuracy viewport tracking setup
-            const observerOptions = {
-                root: null,
-                rootMargin: '-10% 0px -50% 0px',
-                threshold: 0.05
-            };
+            function updateNavigationUnderline() {
+                // Read exact layout pixel heights relative to the screen roof edge
+                const topRect = topSection.getBoundingClientRect();
+                const researchRect = researchSection.getBoundingClientRect();
+                const contactRect = contactSection.getBoundingClientRect();
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const activeId = entry.target.getAttribute('id');
-                        
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href') === '#' + activeId) {
-                                link.classList.add('active');
-                            }
-                        });
+                let activeId = 'nav-portfolio';
+
+                // Condition Loop: Evaluates window height to track reverse upward movement flawlessly
+                if (contactRect.top <= window.innerHeight * 0.75 || (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 50) {
+                    activeId = 'nav-contact';
+                } else if (researchRect.top <= 140) {
+                    activeId = 'nav-research';
+                } else {
+                    activeId = 'nav-portfolio';
+                }
+
+                // UI Update Loop: Changes lines instantly with no lag
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('id') === activeId) {
+                        link.classList.add('active');
                     }
                 });
-            }, observerOptions);
+            }
 
-            sections.forEach(section => observer.observe(section));
+            // Bind the calculator directly to the browser window scroll physics
+            window.addEventListener('scroll', updateNavigationUnderline, { passive: true });
+            window.addEventListener('resize', updateNavigationUnderline, { passive: true });
+            
+            // Run once immediately on launch to establish baseline view configurations
+            updateNavigationUnderline();
         });
     </script>
 
