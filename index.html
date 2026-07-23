@@ -200,72 +200,82 @@
         </div>
     </header>
 
-       <main>
+           <main>
         <h2>Software Suites & Code Architecture</h2>
         <div class="pictorial-matrix">
             
-            <!-- Card A: 1D Solver (Links to blog.html as an in-depth code look) -->
-            <div class="matrix-card">
-                <div class="card-canvas" style="background: linear-gradient(135deg, #141416 0%, #2c2c2e 100%);">
-                    [ \partial \rho / \partial t ]<br>1D_HYDRO_SOLVER_V1
+            <!-- Card A: Whole Box Links to blog.html -->
+            <a href="blog.html" style="text-decoration: none; color: inherit; display: flex;">
+                <div class="matrix-card" style="width: 100%; flex-grow: 1;">
+                    <div class="card-canvas" style="background: linear-gradient(135deg, #141416 0%, #2c2c2e 100%);">
+                        [ \partial \rho / \partial t ]<br>1D_HYDRO_SOLVER_V1
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">1D-Stellar-Hydrodynamics</div>
+                        <p class="card-desc">A finite-volume fluid dynamics numerical solver configured in Python to compute 1D mass conservation profiles and trace shocks along circumstellar boundaries.</p>
+                        <div class="card-tag">Python / Finite-Volume</div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <div class="card-title"><a href="blog.html">1D-Stellar-Hydrodynamics</a></div>
-                    <p class="card-desc">A finite-volume fluid dynamics numerical solver configured in Python to compute 1D mass conservation profiles and trace shocks along circumstellar boundaries.</p>
-                    <div class="card-tag">Python / Finite-Volume</div>
-                </div>
-            </div>
+            </a>
 
-            <!-- Card B: TeX Manuscript (Directly links to open your PDF paper) -->
-            <div class="matrix-card">
-                <div class="card-canvas" style="background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%);">
-                    DOCUMENT_MATRIX<br>LBV_REVIEW_PDF
+            <!-- Card B: Whole Box Links to lbv_review.pdf -->
+            <a href="lbv_review.pdf" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
+                <div class="matrix-card" style="width: 100%; flex-grow: 1;">
+                    <div class="card-canvas" style="background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%);">
+                        DOCUMENT_MATRIX<br>LBV_REVIEW_PDF
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">LBV-Winds-Literature-Review</div>
+                        <p class="card-desc">A formal academic review tracking parameters like cooling factor and CFL stability across historical single-star wind models.</p>
+                        <div class="card-tag">LaTeX / Manuscript</div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <div class="card-title"><a href="lbv_review.pdf" target="_blank">LBV-Winds-Literature-Review</a></div>
-                    <p class="card-desc">A formal academic review tracking parameters like cooling factor and CFL stability across historical single-star wind models.</p>
-                    <div class="card-tag">LaTeX / Manuscript</div>
-                </div>
-            </div>
+            </a>
 
-            <!-- Card C: Data Analytics Suite (Links to blog.html) -->
-            <div class="matrix-card">
-                <div class="card-canvas" style="background: linear-gradient(135deg, #1c1c1e 0%, #3a3a3c 100%);">
-                    DATA_PIPELINE<br>TREND_FILTERS
+            <!-- Card C: Whole Box Links to blog.html -->
+            <a href="blog.html" style="text-decoration: none; color: inherit; display: flex;">
+                <div class="matrix-card" style="width: 100%; flex-grow: 1;">
+                    <div class="card-canvas" style="background: linear-gradient(135deg, #1c1c1e 0%, #3a3a3c 100%);">
+                        DATA_PIPELINE<br>TREND_FILTERS
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">Stellar-Data-Processing-Suite</div>
+                        <p class="card-desc">A post-processing automation suite utilizing rolling baseline trend filters and smoothing masks to isolate simulation macro-trends.</p>
+                        <div class="card-tag">Python / NumPy / Pandas</div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <div class="card-title"><a href="blog.html">Stellar-Data-Processing-Suite</a></div>
-                    <p class="card-desc">A post-processing automation suite utilizing rolling baseline trend filters and smoothing masks to isolate simulation macro-trends.</p>
-                    <div class="card-tag">Python / NumPy / Pandas</div>
-                </div>
-            </div>
+            </a>
             
         </div> <!-- Closes the pictorial matrix grid cleanly -->
 
         <h2>Research Journal Logs</h2>
         <div class="editorial-stream">
             
-            <!-- Log Entry 04 (Links to blog.html) -->
-            <div class="editorial-row">
-                <div class="editorial-main">
-                    <div class="editorial-title"><a href="blog.html">Isolating Simulation Macro-Evolution from Grid Shocks</a></div>
-                    <p class="editorial-snippet">An analysis of why dynamic center-moving window filters are crucial to isolate major thermodynamic boundaries from high-frequency numerical logging spikes during long simulation loops.</p>
+            <!-- Log Entry 04: Whole Row Links to blog.html -->
+            <a href="blog.html" style="text-decoration: none; color: inherit; display: block;">
+                <div class="editorial-row">
+                    <div class="editorial-main">
+                        <div class="editorial-title">Isolating Simulation Macro-Evolution from Grid Shocks</div>
+                        <p class="editorial-snippet">An analysis of why dynamic center-moving window filters are crucial to isolate major thermodynamic boundaries from high-frequency numerical logging spikes during long simulation loops.</p>
+                    </div>
+                    <div class="editorial-side">
+                        <div>23 JUL 2026</div>
+                    </div>
                 </div>
-                <div class="editorial-side">
-                    <div>23 JUL 2026</div>
-                </div>
-            </div>
+            </a>
 
-            <!-- Log Entry 03 (Links to blog.html) -->
-            <div class="editorial-row">
-                <div class="editorial-main">
-                    <div class="editorial-title"><a href="blog.html">Numerical Divergence Criteria in Non-Adiabatic Environments</a></div>
-                    <p class="editorial-snippet">Reviewing why matrix calculation pipelines divide by zero when boundary velocities cross local sonic speed walls without an active temporal dampener enabled.</p>
+            <!-- Log Entry 03: Whole Row Links to blog.html -->
+            <a href="blog.html" style="text-decoration: none; color: inherit; display: block;">
+                <div class="editorial-row">
+                    <div class="editorial-main">
+                        <div class="editorial-title">Numerical Divergence Criteria in Non-Adiabatic Environments</div>
+                        <p class="editorial-snippet">Reviewing why matrix calculation pipelines divide by zero when boundary velocities cross local sonic speed walls without an active temporal dampener enabled.</p>
+                    </div>
+                    <div class="editorial-side">
+                        <div>14 JUN 2026</div>
+                    </div>
                 </div>
-                <div class="editorial-side">
-                    <div>14 JUN 2026</div>
-                </div>
-            </div>
+            </a>
 
         </div> <!-- Closes the editorial-stream layout -->
     </main>
@@ -277,3 +287,4 @@
 
 </body>
 </html>
+
