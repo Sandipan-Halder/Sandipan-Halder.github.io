@@ -30,7 +30,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Professional UX Pattern: Fixed Sticky Header with dynamic tracking background */
+        /* Fixed Sticky Header with dynamic frosted-glass background tracking */
         .sticky-nav-wrapper {
             position: sticky;
             top: 0;
@@ -58,7 +58,7 @@
             padding-bottom: 6px;
             border-bottom: 2px solid transparent;
         }
-        /* Dynamic Slider: Active states shift lines seamlessly via JavaScript */
+        /* Dynamic Underline: Slider elements move via scroll position coordinates */
         nav a.active { 
             color: var(--text-main); 
             border-bottom-color: var(--text-main); 
@@ -96,9 +96,9 @@
             letter-spacing: -0.1px;
         }
 
-        /* Targets for dynamic scrolling offsets to prevent sticky menu coverups */
+        /* Strict Geometric Offset: Shifts the section headers down slightly so they sit perfectly under the floating menu */
         .section-target {
-            scroll-margin-top: 6rem;
+            scroll-margin-top: 5.5rem;
         }
 
         h2 { 
@@ -206,21 +206,33 @@
         .editorial-side { text-align: right; font-family: monospace; font-size: 0.8rem; color: #86868b; white-space: nowrap; }
 
         footer { 
-            margin-top: 8rem; 
+            margin-top: 10rem; 
             text-align: center; 
-            font-size: 0.8rem; 
-            color: #86868b; 
+            font-size: 0.85rem; 
+            color: var(--text-muted); 
             border-top: 1px solid var(--border-clean); 
-            padding-top: 2rem; 
-            font-family: monospace;
-            letter-spacing: 0.5px;
+            padding-top: 3rem; 
+        }
+        .footer-contact {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+        .footer-contact a {
+            color: var(--text-main);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid var(--text-main);
+            padding-bottom: 1px;
+        }
+        .footer-contact a:hover {
+            color: var(--text-muted);
+            border-bottom-color: var(--text-muted);
         }
     </style>
 </head>
 <body>
 
-    <!-- Sticky Navigation Wrapper: Stays locked at top screen edge on scroll -->
-        <!-- Sticky Navigation Wrapper: Stays locked at top screen edge on scroll -->
     <div class="sticky-nav-wrapper">
         <nav id="main-nav">
             <a href="#portfolio-section" id="nav-portfolio" class="active">Portfolio</a>
@@ -229,9 +241,7 @@
         </nav>
     </div>
 
-
     <header>
-        <!-- Full-Color Wide Visual Banner Container -->
         <div style="width: 100%; height: 280px; border-radius: 12px; overflow: hidden; margin-bottom: 2.5rem; border: 1px solid var(--border-clean);">
             <img src="hero_landscape.jpg" alt="Research Workspace Environment" style="width: 100%; height: 100%; object-fit: cover; opacity: 1.0;">
         </div>
@@ -245,12 +255,12 @@
         </div>
     </header>
     <main>
-        <!-- PORTFOLIO SECTION ENVELOPE -->
+        <!-- PORTFOLIO SECTION -->
         <section id="portfolio-section" class="section-target">
             <h2>Software Suites & Code Architecture</h2>
             <div class="pictorial-matrix">
                 
-                <!-- Card A: Full-Box Project Link -->
+                <!-- Card A -->
                 <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
                     <div class="matrix-card" style="width: 100%; flex-grow: 1;">
                         <div class="card-canvas" style="background: linear-gradient(135deg, #141416 0%, #2c2c2e 100%);">
@@ -264,7 +274,7 @@
                     </div>
                 </a>
 
-                <!-- Card B: Full-Box Manuscript Link -->
+                <!-- Card B -->
                 <a href="lbv_review.pdf" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
                     <div class="matrix-card" style="width: 100%; flex-grow: 1;">
                         <div class="card-canvas" style="background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%);">
@@ -278,7 +288,7 @@
                     </div>
                 </a>
 
-                <!-- Card C: Full-Box Processing Suite Link -->
+                <!-- Card C -->
                 <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
                     <div class="matrix-card" style="width: 100%; flex-grow: 1;">
                         <div class="card-canvas" style="background: linear-gradient(135deg, #1c1c1e 0%, #3a3a3c 100%);">
@@ -295,12 +305,12 @@
             </div>
         </section>
 
-        <!-- BLOG / RESEARCH LOG SECTION ENVELOPE -->
+        <!-- RESEARCH LOG SECTION -->
         <section id="blog-section" class="section-target">
             <h2>Research Journal Logs</h2>
             <div class="editorial-stream">
                 
-                <!-- Log Entry 04: Full-Row External Link -->
+                <!-- Log Entry 04 -->
                 <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: block;">
                     <div class="editorial-row">
                         <div class="editorial-main">
@@ -313,7 +323,7 @@
                     </div>
                 </a>
 
-                <!-- Log Entry 03: Full-Row External Link -->
+                <!-- Log Entry 03 -->
                 <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: block;">
                     <div class="editorial-row">
                         <div class="editorial-main">
@@ -328,30 +338,18 @@
 
             </div>
         </section>
-            <!-- CONTACT & ACADEMIC INQUIRIES SECTION ENVELOPE -->
-        <section id="contact-section" class="section-target" style="margin-bottom: 4rem;">
-            <h2>Academic & Institutional Inquiries</h2>
-            <div style="background: var(--card-surface); border: 1px solid var(--border-clean); border-radius: 12px; padding: 2rem; text-align: left;">
-                <p style="margin-top: 0; font-size: 1.05rem; color: var(--text-main);">
-                    If you are interested in discussing 1D hydrodynamic wind frameworks, computational modeling pipelines, or potential research collaborations, please reach out via my institutional inbox:
-                </p>
-                <div style="margin-top: 1.5rem; font-family: monospace; font-size: 1.1rem; font-weight: 600; background: #f5f5f7; padding: 0.8rem 1.2rem; border-radius: 8px; display: inline-block; border: 1px solid var(--border-clean);">
-                    your.username@university.edu
-                </div>
-                <p style="margin-top: 1rem; margin-bottom: 0; font-size: 0.85rem; color: var(--text-muted); font-style: italic;">
-                    *Replace the placeholder string above with your true primary academic email address.
-                </p>
-            </div>
-        </section>
-
     </main>
 
-    <footer>
+    <!-- FOOTER ARCHITECTURE WITH INTEGRATED CONTACT AND METRICS -->
+    <footer id="contact-section" class="section-target">
+        <div class="footer-contact">
+            Academic Inquiries: <a href="mailto:your.username@university.edu">your.username@university.edu</a>
+        </div>
         <p>&copy; 2026. All rights reserved. | Computational Astrophysics Portfolio</p>
-        <p style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.75;">Hosted via <a href="https://github.com" style="color: inherit; text-decoration: underline;">GitHub Pages</a></p>
+        <p style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.7;">Hosted via <a href="https://github.com" style="color: inherit; text-decoration: underline;">GitHub Pages</a></p>
     </footer>
 
-       <!-- Intersection Observer Script: Tracks three distinct page checkpoints dynamically -->
+    <!-- Script Room: Coordinates alignment and underline movements on viewport entry -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('.section-target');
@@ -359,8 +357,8 @@
 
             const observerOptions = {
                 root: null,
-                rootMargin: '-20% 0px -40% 0px',
-                threshold: 0.1
+                rootMargin: '-15% 0px -45% 0px',
+                threshold: 0
             };
 
             const observer = new IntersectionObserver((entries) => {
