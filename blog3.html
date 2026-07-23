@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Log // Parameter Boundary Failures</title>
+    <style>
+        :root {
+            --bg-primary: #fbfbfd;
+            --text-main: #1d1d1f;
+            --text-muted: #515154;
+            --border-clean: #e5e5ea;
+            --card-surface: #ffffff;
+        }
+
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif; 
+            line-height: 1.6; 
+            color: var(--text-main); 
+            background-color: var(--bg-primary); 
+            max-width: 780px; 
+            margin: 0 auto; 
+            padding: 3rem 2rem;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header { 
+            border-bottom: 1px solid var(--border-clean); 
+            padding-bottom: 2rem; 
+            margin-bottom: 3.5rem; 
+        }
+        
+        .back-nav { 
+            font-size: 0.85rem; 
+            font-weight: 600; 
+            letter-spacing: 0.5px; 
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+        .back-nav a { color: var(--text-muted); text-decoration: none; transition: color 0.2s ease; }
+        .back-nav a:hover { color: var(--text-main); }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.5px; margin: 0 0 0.5rem 0; line-height: 1.2; }
+        .post-meta { font-family: monospace; font-size: 0.8rem; color: #86868b; margin-bottom: 2rem; text-transform: uppercase; }
+        
+        h2 { font-size: 1.35rem; font-weight: 600; color: var(--text-main); margin-top: 3rem; margin-bottom: 1rem; letter-spacing: -0.2px; }
+        p { font-size: 1.05rem; color: #333; margin-bottom: 1.5rem; }
+        
+        .data-panel {
+            background: var(--card-surface);
+            border: 1px solid var(--border-clean);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+        }
+
+        footer { margin-top: 8rem; text-align: center; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border-clean); padding-top: 3rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="back-nav">
+            <a href="index.html">← Back to Dashboard</a>
+        </div>
+        <h1>Parameter Boundary Failures in 1D Ideal Fluid Codes</h1>
+        <div class="post-meta">LOG REVISION: LOG_02 // DATELINE: 02 MAY 2026</div>
+    </header>
+
+    <main>
+        <p>Testing simulation runs under extreme density constraints revealed significant boundary cell divergence. This diagnostic note outlines the spatial mesh adaptations implemented to correct for numerical reflections at the outer radius limits.</p>
+        
+        <h2>1. Identifying Code Reflection Shocks</h2>
+        <p>When wind boundary fields are treated as hard computational walls, mass vectors reflect backwards into incoming stellar wind flows. This creates artificial shock propagation profiles that pollute the raw velocity arrays.</p>
+        
+        <div class="data-panel">
+            <strong>System Parameters Tested:</strong><br>
+            • Grid Density Variant: Standard 30 spatial cells<br>
+            • Wave Reflection Vector: Mitigated via open outflow cell scaling equations<br>
+            • Code Execution Error Status: RESOLVED
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026. All rights reserved. | Computational Astrophysics Portfolio</p>
+    </footer>
+
+</body>
+</html>
