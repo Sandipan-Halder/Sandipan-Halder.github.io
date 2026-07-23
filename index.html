@@ -340,45 +340,23 @@
             <h2>Research Journal Logs</h2>
             <div class="editorial-stream">
                 
-                <!-- Entry 04 -->
-                <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                               <!-- Jekyll Dynamic Automation Engine Loop -->
+                {% for post in site.posts %}
+                <a href="{{ post.url | relative_url }}" style="text-decoration: none; color: inherit; display: block;">
                     <div class="editorial-row">
                         <div class="editorial-main">
-                            <div class="editorial-title">Isolating Simulation Macro-Evolution from Grid Shocks</div>
-                            <p class="editorial-snippet">An analysis of why dynamic center-moving window filters are crucial to isolate major thermodynamic boundaries from high-frequency numerical logging spikes during long simulation loops.</p>
+                            <div class="editorial-title">
+                                <span class="blog-badge">LOG</span>{{ post.title }}
+                            </div>
+                            <p class="editorial-snippet">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
                         </div>
                         <div class="editorial-side">
-                            <div>23 JUL 2026</div>
+                            <div>{{ post.date | date: "%d %b %Y" | upcase }}</div>
                         </div>
                     </div>
                 </a>
+                {% endfor %}
 
-                <!-- Entry 03 -->
-                <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: block;">
-                    <div class="editorial-row">
-                        <div class="editorial-main">
-                            <div class="editorial-title">Numerical Divergence Criteria in Non-Adiabatic Environments</div>
-                            <p class="editorial-snippet">Reviewing why matrix calculation pipelines divide by zero when boundary velocities cross local sonic speed walls without an active temporal dampener enabled.</p>
-                        </div>
-                        <div class="editorial-side">
-                            <div>14 JUN 2026</div>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Entry 02 -->
-                <a href="blog3.html" style="text-decoration: none; color: inherit; display: block;">
-
-                    <div class="editorial-row">
-                        <div class="editorial-main">
-                            <div class="editorial-title">Parameter Boundary Failures in 1D Ideal Fluid Codes</div>
-                            <p class="editorial-snippet">A deep diagnostic log mapping how spatial cell resolution scales up noise propagation if boundaries are treated as rigid walls rather than radiating zones.</p>
-                        </div>
-                        <div class="editorial-side">
-                            <div>02 MAY 2026</div>
-                        </div>
-                    </div>
-                </a>
 
             </div>
         </div>
