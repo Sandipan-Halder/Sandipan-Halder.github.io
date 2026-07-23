@@ -233,13 +233,16 @@
 </head>
 <body>
 
+       <!-- Sticky Navigation Wrapper: Stays locked at top screen edge on scroll -->
+    <div id="top-anchor" class="section-target" style="scroll-margin-top: 0;"></div>
     <div class="sticky-nav-wrapper">
         <nav id="main-nav">
-            <a href="#portfolio-section" id="nav-portfolio" class="active">Portfolio</a>
+            <a href="#top-anchor" id="nav-portfolio" class="active">Portfolio</a>
             <a href="#blog-section" id="nav-blog">Research Log</a>
             <a href="#contact-section" id="nav-contact">Contact</a>
         </nav>
     </div>
+
 
     <header>
         <div style="width: 100%; height: 280px; border-radius: 12px; overflow: hidden; margin-bottom: 2.5rem; border: 1px solid var(--border-clean);">
@@ -254,11 +257,12 @@
             </p>
         </div>
     </header>
-    <main>
-        <!-- PORTFOLIO SECTION -->
-        <section id="portfolio-section" class="section-target">
+        <main>
+        <!-- PORTFOLIO MATRIX -->
+        <section>
             <h2>Software Suites & Code Architecture</h2>
             <div class="pictorial-matrix">
+
                 
                 <!-- Card A -->
                 <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
