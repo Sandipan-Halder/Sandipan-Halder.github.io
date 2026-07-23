@@ -5,236 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stellar Hydrodynamics Workspace // Research Portfolio</title>
     <style>
-        /* Psych-UX Rule: 60-30-10 Color Architecture */
+        /* Premium Psych-UX 60-30-10 Architecture */
         :root {
             --bg-primary: #fbfbfd;
             --text-main: #1d1d1f;
             --text-muted: #515154;
             --border-clean: #e5e5ea;
+            --border-dark: #1d1d1f;
             --card-surface: #ffffff;
+            --accent-grid: rgba(29, 29, 31, 0.03);
         }
 
-        /* Hardcode smooth physics scaling across all view shifts */
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif; 
-            line-height: 1.5; 
-            color: var(--text-main); 
-            background-color: var(--bg-primary); 
-            max-width: 960px; 
-            margin: 0 auto; 
-            padding: 0 2rem 3rem 2rem;
-            -webkit-font-smoothing: antialiased;
+            line-height: 1.5; color: var(--text-main); background-color: var(--bg-primary); 
+            max-width: 960px; margin: 0 auto; padding: 0 2rem 3rem 2rem; -webkit-font-smoothing: antialiased;
         }
 
-        /* FIXED STICKY NAVIGATION HEADER WITH PREMIUM MICRO-EASE */
+        /* Frosted Glass Floating Anchor Menu */
         .sticky-nav-wrapper {
-            position: sticky;
-            top: 0;
-            background-color: rgba(251, 251, 253, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-clean);
-            margin: 0 -2rem 3rem -2rem;
-            padding: 1.5rem 2rem;
+            position: sticky; top: 0; background-color: rgba(251, 251, 253, 0.85);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 1000;
+            border-bottom: 1px solid var(--border-clean); margin: 0 -2rem 3rem -2rem; padding: 1.5rem 2rem;
         }
         
-        nav { 
-            font-size: 0.85rem; 
-            font-weight: 600; 
-            letter-spacing: 1px; 
-            text-transform: uppercase;
-            display: flex;
-            gap: 2rem;
-        }
-        
+        nav { font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; display: flex; gap: 2rem; }
         nav a { 
-            color: var(--text-muted); 
-            text-decoration: none; 
-            padding-bottom: 6px;
-            border-bottom: 2px solid transparent;
-            /* Cubic bezier matching Apple desktop UI system curves */
+            color: var(--text-muted); text-decoration: none; padding-bottom: 6px; border-bottom: 2px solid transparent;
             transition: color 0.25s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.25s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        
-        nav a:hover { 
-            color: var(--text-main); 
-        }
+        nav a:hover, nav a.active { color: var(--text-main); border-bottom-color: var(--text-main); }
+        header { margin-bottom: 4rem; padding-top: 1rem; }
+        .identity-banner { max-width: 720px; }
+        h1 { font-size: 3.2rem; font-weight: 700; letter-spacing: -1px; margin: 0 0 0.5rem 0; line-height: 1.1; }
+        .identity-sub { font-size: 1.4rem; font-weight: 400; color: var(--text-muted); margin-bottom: 1.5rem; }
+        .identity-bio { font-size: 1.15rem; color: var(--text-main); }
+        .section-anchor { scroll-margin-top: 7rem; }
+        h2 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-top: 6rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border-clean); padding-bottom: 0.75rem; }
 
-        /* Smooth dynamic sliding active accent rule */
-        nav a.active {
-            color: var(--text-main);
-            border-bottom-color: var(--text-main);
-        }
-        
-        header { 
-            margin-bottom: 4rem; 
-            padding-top: 1rem;
-        }
-        
-        .identity-banner {
-            max-width: 720px;
-        }
-        h1 { 
-            font-size: 3.2rem; 
-            font-weight: 700; 
-            letter-spacing: -1px; 
-            margin: 0 0 0.5rem 0; 
-            line-height: 1.1;
-        }
-        .identity-sub { 
-            font-size: 1.4rem; 
-            font-weight: 400; 
-            color: var(--text-muted); 
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.2px;
-        }
-        .identity-bio { 
-            font-size: 1.15rem; 
-            color: var(--text-main); 
-            font-weight: 400;
-            letter-spacing: -0.1px;
-        }
-
-        /* Strict geometric offset rule to account for fixed bar elevation profile */
-        .section-anchor {
-            scroll-margin-top: 7rem;
-        }
-
-        h2 { 
-            font-size: 0.85rem; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            color: var(--text-muted);
-            margin-top: 6rem;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--border-clean);
-            padding-bottom: 0.75rem;
-        }
-
-        .pictorial-matrix { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); 
-            gap: 2rem; 
-            margin-bottom: 4rem;
-        }
-        
-        .matrix-card { 
-            background: var(--card-surface); 
-            border: 1px solid var(--border-clean); 
-            border-radius: 12px; 
-            overflow: hidden; 
-            display: flex; 
-            flex-direction: column; 
-            height: 100%;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
-        }
-        
-        .matrix-card:hover { 
-            transform: translateY(-4px); 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.04); 
-            border-color: #d2d2d7;
-        }
+        /* Blueprint Layout Matrix Components */
+        .pictorial-matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+        .matrix-card { background: var(--card-surface); border: 1px solid var(--border-clean); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; height: 100%; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .matrix-card:hover { transform: translateY(-4px); box-shadow: 0 30px 60px rgba(0,0,0,0.06); border-color: var(--border-dark); }
         
         .card-canvas { 
-            height: 160px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: #ffffff; 
-            font-family: monospace; 
-            font-size: 0.8rem; 
-            letter-spacing: 1px; 
-            padding: 1.5rem; 
-            text-align: center; 
-            border-bottom: 1px solid var(--border-clean);
+            height: 160px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff; font-family: monospace; font-size: 0.75rem; padding: 1.5rem; text-align: center; border-bottom: 1px solid var(--border-clean); position: relative;
+            background-size: 20px 20px; background-image: linear-gradient(to right, var(--accent-grid) 1px, transparent 1px), linear-gradient(to bottom, var(--accent-grid) 1px, transparent 1px);
         }
-        
-        .card-body { 
-            padding: 1.5rem; 
-            flex-grow: 1; 
-            display: flex; 
-            flex-direction: column; 
-        }
-        .card-title { 
-            font-size: 1.25rem; 
-            font-weight: 600; 
-            margin-bottom: 0.5rem; 
-            letter-spacing: -0.2px;
-        }
-        .card-desc { 
-            font-size: 0.95rem; 
-            color: var(--text-muted); 
-            margin-bottom: 1.5rem; 
-            flex-grow: 1; 
-        }
-        .card-tag { 
-            font-family: monospace; 
-            font-size: 0.7rem; 
-            color: var(--text-main); 
-            background: #f5f5f7; 
-            padding: 0.3rem 0.6rem; 
-            border-radius: 6px; 
-            align-self: flex-start; 
-            font-weight: 600;
-            text-transform: uppercase;
-        }
+        .canvas-spec { position: absolute; bottom: 8px; right: 12px; font-size: 0.65rem; color: var(--text-muted); opacity: 0.6; }
+        .canvas-status { position: absolute; top: 10px; left: 12px; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
+        .card-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .card-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .card-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; flex-grow: 1; }
+        .card-tag-wrapper { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .card-tag { font-family: monospace; font-size: 0.65rem; color: var(--text-main); background: #f5f5f7; padding: 0.3rem 0.6rem; border-radius: 6px; font-weight: 600; text-transform: uppercase; border: 1px solid var(--border-clean); }
 
-        .editorial-stream { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 1.5rem; 
-        }
-        .editorial-row { 
-            background: var(--card-surface); 
-            border: 1px solid var(--border-clean); 
-            border-radius: 12px; 
-            padding: 1.75rem; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: flex-start; 
-            gap: 3rem; 
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .editorial-row:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
-            border-color: #d2d2d7;
-        }
+        .editorial-stream { display: flex; flex-direction: column; gap: 1.5rem; }
+        .editorial-row { background: var(--card-surface); border: 1px solid var(--border-clean); border-radius: 12px; padding: 1.75rem; display: flex; justify-content: space-between; align-items: center; gap: 3rem; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .editorial-row:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.03); border-color: var(--border-dark); }
         .editorial-main { max-width: 75%; }
-        .editorial-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: -0.1px; }
+        .editorial-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; }
         .editorial-snippet { font-size: 0.95rem; color: var(--text-muted); margin: 0; }
         .editorial-side { text-align: right; font-family: monospace; font-size: 0.8rem; color: #86868b; white-space: nowrap; }
+        .blog-badge { font-family: monospace; font-size: 0.65rem; background: #1d1d1f; color: #fff; padding: 2px 6px; border-radius: 4px; margin-right: 8px; display: inline-block; }
 
-        footer { 
-            text-align: center; 
-            font-size: 0.85rem; 
-            color: var(--text-muted); 
-            border-top: 1px solid var(--border-clean); 
-            padding-top: 3rem; 
-        }
-        .footer-contact {
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-            color: var(--text-main);
-        }
-        .footer-contact a {
-            color: var(--text-main);
-            font-weight: 600;
-            text-decoration: none;
-            border-bottom: 1px solid var(--text-main);
-            padding-bottom: 1px;
-        }
+        footer { text-align: center; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border-clean); padding-top: 3rem; }
+        .footer-contact { margin-bottom: 1.5rem; font-size: 1rem; color: var(--text-main); }
+        .footer-contact a { color: var(--text-main); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--text-main); }
     </style>
 </head>
 <body>
 
-    <!-- HIGH-INTERACTION NAVIGATION BAR LAYOUT -->
     <div class="sticky-nav-wrapper">
         <nav id="main-nav">
             <a href="#hero-top" id="nav-portfolio" class="active">Portfolio</a>
@@ -243,38 +86,34 @@
         </nav>
     </div>
 
-    <!-- MAIN IDENTITY WRAPPER -->
     <header id="hero-top" class="section-anchor">
         <div style="width: 100%; height: 280px; border-radius: 12px; overflow: hidden; margin-bottom: 2.5rem; border: 1px solid var(--border-clean);">
             <img src="hero_landscape.jpg" alt="Research Workspace" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         
-        
             <h1>Your Name</h1>
             Computational Astrophysics Postgraduate Student</div>
-            
-                I specialize in fluid mechanics, stellar wind hydrodynamics, and computational data processing. My current master's framework evaluates boundary layer stability and mass-loss parameter configurations for Luminous Blue Variable environments.
-            </p>
+            I specialize in fluid mechanics, stellar wind hydrodynamics, and computational data processing. My current master's framework evaluates boundary layer stability and mass-loss parameter configurations for Luminous Blue Variable environments.</p>
         </div>
     </header>
-
     <main>
-        <!-- MASTER UNIFIED RESEARCH TARGET ZONE -->
         <div id="research-target" class="section-anchor">
-            
             <h2>Software Suites & Code Architecture</h2>
             <div class="pictorial-matrix">
                 
                 <!-- Card 1 -->
-                <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
+                <a href="blog.html" style="text-decoration: none; color: inherit; display: flex;">
                     <div class="matrix-card">
-                        <div class="card-canvas" style="background: linear-gradient(135deg, #141416 0%, #2c2c2e 100%);">
-                            [ \partial \rho / \partial t ]<br>1D_HYDRO_SOLVER_V1
+                        <div class="card-canvas" style="background-color: #141416;">
+                            <div class="canvas-status" style="background: #e3f2fd; color: #0d47a1;">[STABLE]</div>
+                            <span style="color: #64ffda; font-weight: bold;">∂ρ/∂t + ∇·(ρv) = 0</span>
+                            <span style="font-size: 0.65rem; opacity: 0.5; margin-top: 0.5rem;">SOLVER_CORE_V1.py</span>
+                            <div class="canvas-spec">GRID: 30_CELLS // CFL: 0.4</div>
                         </div>
                         <div class="card-body">
                             <div class="card-title">1D-Stellar-Hydrodynamics</div>
                             <p class="card-desc">A finite-volume fluid dynamics numerical solver configured in Python to compute 1D mass conservation profiles and trace shocks along circumstellar boundaries.</p>
-                            <div class="card-tag">Python / Finite-Volume</div>
+                            <div class="card-tag-wrapper"><span class="card-tag">Python</span><span class="card-tag">Finite-Volume</span></div>
                         </div>
                     </div>
                 </a>
@@ -282,140 +121,144 @@
                 <!-- Card 2 -->
                 <a href="lbv_review.pdf" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
                     <div class="matrix-card">
-                        <div class="card-canvas" style="background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%);">
-                            DOCUMENT_MATRIX<br>LBV_REVIEW_PDF
+                        <div class="card-canvas" style="background-color: #1c1c1e;">
+                            <div class="canvas-status" style="background: #f1f8ff; color: #0366d6;">[MANUSCRIPT]</div>
+                            <span style="color: #ffb300; font-weight: bold;">📝 LBV_MANUSCRIPT_v2</span>
+                            <div class="canvas-spec">FORMAT: PDF-TeXShop</div>
                         </div>
                         <div class="card-body">
                             <div class="card-title">LBV-Winds-Literature-Review</div>
                             <p class="card-desc">A formal academic review tracking parameters like cooling factor and CFL stability across historical single-star wind models.</p>
-                            <div class="card-tag">LaTeX / Manuscript</div>
+                            <div class="card-tag-wrapper"><span class="card-tag">LaTeX</span><span class="card-tag">Review Paper</span></div>
                         </div>
                     </div>
                 </a>
 
                 <!-- Card 3 -->
-                <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
+                <a href="blog.html" style="text-decoration: none; color: inherit; display: flex;">
                     <div class="matrix-card">
-                        <div class="card-canvas" style="background: linear-gradient(135deg, #1c1c1e 0%, #3a3a3c 100%);">
-                            DATA_PIPELINE<br>TREND_FILTERS
+                        <div class="card-canvas" style="background-color: #2c2c2e;">
+                            <div class="canvas-status" style="background: #e8f5e9; color: #1b5e20;">[PIPELINE]</div>
+                            <span style="color: #42a5f5; font-weight: bold;">import numpy as np</span>
+                            <div class="canvas-spec">ENGINE: NUMPY // PANDAS</div>
                         </div>
                         <div class="card-body">
                             <div class="card-title">Stellar-Data-Processing-Suite</div>
                             <p class="card-desc">A post-processing automation suite utilizing rolling baseline trend filters and smoothing masks to isolate simulation macro-trends.</p>
-                            <div class="card-tag">Python / NumPy / Pandas</div>
+                            <div class="card-tag-wrapper"><span class="card-tag">Python</span><span class="card-tag">NumPy</span></div>
                         </div>
                     </div>
                 </a>
 
                 <!-- Card 4 -->
-                <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
+                <a href="blog.html" style="text-decoration: none; color: inherit; display: flex;">
                     <div class="matrix-card">
-                        <div class="card-canvas" style="background: linear-gradient(135deg, #3a3a3c 0%, #141416 100%);">
-                            CFL_TRACKER<br>TIME_STEPPING_v2
+                        <div class="card-canvas" style="background-color: #232325;">
+                            <div class="canvas-status" style="background: #fff3e0; color: #e65100;">[DYNAMIC]</div>
+                            <span style="color: #ff7043; font-weight: bold;">Δt = Min(Δx / |v + c|)</span>
+                            <div class="canvas-spec">MATH: TIME-INTEGRATION</div>
                         </div>
                         <div class="card-body">
                             <div class="card-title">Dynamic-CFL-Stability-Module</div>
-                            <p class="card-desc">A plug-in calculation wrapper built to dynamically vary numerical time-steps across transient shocks, preventing zero-division errors during code execution.</p>
-                            <div class="card-tag">Python / Numerical Math</div>
+                            <p class="card-desc">A plug-in calculation wrapper built to dynamically vary numerical time-steps across transient shocks, preventing zero-division errors.</p>
+                            <div class="card-tag-wrapper"><span class="card-tag">Python</span><span class="card-tag">Numerical Math</span></div>
                         </div>
                     </div>
                 </a>
 
                 <!-- Card 5 -->
-                <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
+                <a href="blog.html" style="text-decoration: none; color: inherit; display: flex;">
                     <div class="matrix-card">
-                        <div class="card-canvas" style="background: linear-gradient(135deg, #2c2c2e 0%, #444446 100%);">
-                            OPACITY_GRID<br>INTEGRATION_M1
+                        <div class="card-canvas" style="background-color: #1b1b1d;">
+                            <div class="canvas-status" style="background: #fafafa; color: #212121;">[INDEX]</div>
+                            <span style="color: #ab47bc; font-weight: bold;">LOOKUP_TABLE_M1</span>
+                            <div class="canvas-spec">COMPILED: FORTRAN 90</div>
                         </div>
                         <div class="card-body">
                             <div class="card-title">Line-Driven-Opacity-Lookup</div>
                             <p class="card-desc">An optimized parsing index mapped to quickly read radiation force multipliers and opacity thresholds within dense stellar winds.</p>
-                            <div class="card-tag">Fortran / Data Mapping</div>
+                            <div class="card-tag-wrapper"><span class="card-tag">Fortran</span><span class="card-tag">Data Mapping</span></div>
                         </div>
                     </div>
                 </a>
                 
-            </div>
-
+            </div> <!-- Closes the pictorial matrix grid cleanly -->
             <h2>Research Journal Logs</h2>
             <div class="editorial-stream">
-                
-                               <!-- Jekyll Dynamic Automation Engine Loop -->
-                {% for post in site.posts %}
-                <a href="{{ post.url | relative_url }}" style="text-decoration: none; color: inherit; display: block;">
+                <!-- Entry 04 -->
+                <a href="blog.html" style="text-decoration: none; color: inherit; display: block;">
                     <div class="editorial-row">
                         <div class="editorial-main">
-                            <div class="editorial-title">
-                                <span class="blog-badge">LOG</span>{{ post.title }}
-                            </div>
-                            <p class="editorial-snippet">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+                            <div class="editorial-title"><span class="blog-badge">LOG_04</span>Isolating Simulation Macro-Evolution from Grid Shocks</div>
+                            <p class="editorial-snippet">An analysis of why dynamic center-moving window filters are crucial to isolate major thermodynamic boundaries from high-frequency numerical logging spikes during long simulation loops.</p>
                         </div>
-                        <div class="editorial-side">
-                            <div>{{ post.date | date: "%d %b %Y" | upcase }}</div>
-                        </div>
+                        <div class="editorial-side"><div>23 JUL 2026</div></div>
                     </div>
                 </a>
-                {% endfor %}
-
-
+                <!-- Entry 03 -->
+                <a href="blog.html" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="editorial-row">
+                        <div class="editorial-main">
+                            <div class="editorial-title"><span class="blog-badge">LOG_03</span>Numerical Divergence Criteria in Non-Adiabatic Environments</div>
+                            <p class="editorial-snippet">Reviewing why matrix calculation pipelines divide by zero when boundary velocities cross local sonic speed walls without an active temporal dampener enabled.</p>
+                        </div>
+                        <div class="editorial-side"><div>14 JUN 2026</div></div>
+                    </div>
+                </a>
+                <!-- Entry 02 -->
+                <a href="blog3.html" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="editorial-row">
+                        <div class="editorial-main">
+                            <div class="editorial-title"><span class="blog-badge">LOG_02</span>Parameter Boundary Failures in 1D Ideal Fluid Codes</div>
+                            <p class="editorial-snippet">A deep diagnostic log mapping how spatial cell resolution scales up noise propagation if boundaries are treated as rigid walls rather than radiating zones.</p>
+                        </div>
+                        <div class="editorial-side"><div>02 MAY 2026</div></div>
+                    </div>
+                </a>
             </div>
         </div>
     </main>
-    <!-- SEPARATION BUFFER & INSTITUTIONAL FOOTER CONTROLLER -->
+    <!-- SEPARATION BUFFER & MINIMALIST FOOTER -->
     <div style="padding-top: 15rem; padding-bottom: 25rem;">
         <footer id="contact-target" class="section-anchor">
-            <div class="footer-contact">
-                Academic Inquiries: <a href="mailto:your.username@university.edu">your.username@university.edu</a>
-            </div>
+            <div class="footer-contact">Academic Inquiries: <a href="mailto:your.username@university.edu">your.username@university.edu</a></div>
             <p>&copy; 2026. All rights reserved. | Computational Astrophysics Portfolio</p>
             <p style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.7;">Hosted via <a href="https://github.com" style="color: inherit; text-decoration: underline;">GitHub Pages</a></p>
         </footer>
     </div>
 
-    <!-- HIGH-FREQUENCY GEOMETRIC SCROLL ENGINE -->
+    <!-- GEOMETRIC COORDINATE SCROLL CONTROLLER -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const navLinks = document.querySelectorAll('#main-nav a');
-            
-            // Hardcoded section threshold tags
             const topSection = document.getElementById('hero-top');
             const researchSection = document.getElementById('research-target');
             const contactSection = document.getElementById('contact-target');
 
             function updateNavigationUnderline() {
-                // Read exact layout pixel heights relative to the screen roof edge
-                const topRect = topSection.getBoundingClientRect();
-                const researchRect = researchSection.getBoundingClientRect();
                 const contactRect = contactSection.getBoundingClientRect();
-
+                const researchRect = researchSection.getBoundingClientRect();
                 let activeId = 'nav-portfolio';
 
-                // Condition Loop: Evaluates window height to track reverse upward movement flawlessly
                 if (contactRect.top <= window.innerHeight * 0.75 || (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 50) {
                     activeId = 'nav-contact';
                 } else if (researchRect.top <= 140) {
                     activeId = 'nav-research';
-                } else {
-                    activeId = 'nav-portfolio';
+                } else { 
+                    activeId = 'nav-portfolio'; 
                 }
 
-                // UI Update Loop: Changes lines instantly with no lag
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    if (link.getAttribute('id') === activeId) {
-                        link.classList.add('active');
+                    if (link.getAttribute('id') === activeId) { 
+                        link.classList.add('active'); 
                     }
                 });
             }
-
-            // Bind the calculator directly to the browser window scroll physics
             window.addEventListener('scroll', updateNavigationUnderline, { passive: true });
             window.addEventListener('resize', updateNavigationUnderline, { passive: true });
-            
-            // Run once immediately on launch to establish baseline view configurations
             updateNavigationUnderline();
         });
     </script>
-
 </body>
 </html>
