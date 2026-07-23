@@ -220,12 +220,15 @@
 <body>
 
     <!-- Sticky Navigation Wrapper: Stays locked at top screen edge on scroll -->
+        <!-- Sticky Navigation Wrapper: Stays locked at top screen edge on scroll -->
     <div class="sticky-nav-wrapper">
         <nav id="main-nav">
             <a href="#portfolio-section" id="nav-portfolio" class="active">Portfolio</a>
             <a href="#blog-section" id="nav-blog">Research Log</a>
+            <a href="#contact-section" id="nav-contact">Contact</a>
         </nav>
     </div>
+
 
     <header>
         <!-- Full-Color Wide Visual Banner Container -->
@@ -325,6 +328,22 @@
 
             </div>
         </section>
+            <!-- CONTACT & ACADEMIC INQUIRIES SECTION ENVELOPE -->
+        <section id="contact-section" class="section-target" style="margin-bottom: 4rem;">
+            <h2>Academic & Institutional Inquiries</h2>
+            <div style="background: var(--card-surface); border: 1px solid var(--border-clean); border-radius: 12px; padding: 2rem; text-align: left;">
+                <p style="margin-top: 0; font-size: 1.05rem; color: var(--text-main);">
+                    If you are interested in discussing 1D hydrodynamic wind frameworks, computational modeling pipelines, or potential research collaborations, please reach out via my institutional inbox:
+                </p>
+                <div style="margin-top: 1.5rem; font-family: monospace; font-size: 1.1rem; font-weight: 600; background: #f5f5f7; padding: 0.8rem 1.2rem; border-radius: 8px; display: inline-block; border: 1px solid var(--border-clean);">
+                    your.username@university.edu
+                </div>
+                <p style="margin-top: 1rem; margin-bottom: 0; font-size: 0.85rem; color: var(--text-muted); font-style: italic;">
+                    *Replace the placeholder string above with your true primary academic email address.
+                </p>
+            </div>
+        </section>
+
     </main>
 
     <footer>
@@ -332,7 +351,7 @@
         <p style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.75;">Hosted via <a href="https://github.com" style="color: inherit; text-decoration: underline;">GitHub Pages</a></p>
     </footer>
 
-    <!-- Intersection Observer Script: Tracks page scrolling position dynamically -->
+       <!-- Intersection Observer Script: Tracks three distinct page checkpoints dynamically -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('.section-target');
@@ -340,8 +359,8 @@
 
             const observerOptions = {
                 root: null,
-                rootMargin: '-20% 0px -60% 0px',
-                threshold: 0
+                rootMargin: '-20% 0px -40% 0px',
+                threshold: 0.1
             };
 
             const observer = new IntersectionObserver((entries) => {
