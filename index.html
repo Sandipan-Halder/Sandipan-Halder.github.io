@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stellar Hydrodynamics Workspace // Research Portfolio</title>
     <style>
-        /* 60-30-10 Color Architecture: Clean neutral canvas to frame full-color data assets */
+        /* Psych-UX Rule: 60-30-10 Color Architecture */
         :root {
             --bg-primary: #fbfbfd;
             --text-main: #1d1d1f;
@@ -14,7 +14,6 @@
             --card-surface: #ffffff;
         }
 
-        /* Psych-UX Rule: Enable smooth scrolling animation natively in browser loops */
         html {
             scroll-behavior: smooth;
         }
@@ -30,7 +29,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Fixed Sticky Header with dynamic frosted-glass background tracking */
+        /* PREMIUM GUI STICKY NAV LAYER */
         .sticky-nav-wrapper {
             position: sticky;
             top: 0;
@@ -51,20 +50,22 @@
             display: flex;
             gap: 2rem;
         }
+        
         nav a { 
             color: var(--text-muted); 
             text-decoration: none; 
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); 
+            transition: all 0.2s ease; 
             padding-bottom: 6px;
             border-bottom: 2px solid transparent;
         }
-        /* Dynamic Underline: Slider elements move via scroll position coordinates */
-        nav a.active { 
-            color: var(--text-main); 
-            border-bottom-color: var(--text-main); 
-        }
+        
         nav a:hover { 
             color: var(--text-main); 
+        }
+
+        nav a.active {
+            color: var(--text-main);
+            border-bottom-color: var(--text-main);
         }
         
         header { 
@@ -96,9 +97,9 @@
             letter-spacing: -0.1px;
         }
 
-        /* Strict Geometric Offset: Shifts the section headers down slightly so they sit perfectly under the floating menu */
-        .section-target {
-            scroll-margin-top: 5.5rem;
+        /* Geometric Protection Anchor: Account for Fixed sticky menu thickness */
+        .section-anchor {
+            scroll-margin-top: 7rem;
         }
 
         h2 { 
@@ -107,16 +108,18 @@
             text-transform: uppercase; 
             letter-spacing: 2px; 
             color: var(--text-muted);
-            margin-top: 5rem;
+            margin-top: 6rem;
             margin-bottom: 2rem;
             border-bottom: 1px solid var(--border-clean);
             padding-bottom: 0.75rem;
         }
 
+        /* Visual Project Matrix */
         .pictorial-matrix { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); 
             gap: 2rem; 
+            margin-bottom: 4rem;
         }
         
         .matrix-card { 
@@ -126,6 +129,7 @@
             overflow: hidden; 
             display: flex; 
             flex-direction: column; 
+            height: 100%;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
         }
         
@@ -179,6 +183,7 @@
             text-transform: uppercase;
         }
 
+        /* Editorial Article Stream */
         .editorial-stream { 
             display: flex; 
             flex-direction: column; 
@@ -206,7 +211,6 @@
         .editorial-side { text-align: right; font-family: monospace; font-size: 0.8rem; color: #86868b; white-space: nowrap; }
 
         footer { 
-            margin-top: 10rem; 
             text-align: center; 
             font-size: 0.85rem; 
             color: var(--text-muted); 
@@ -215,7 +219,7 @@
         }
         .footer-contact {
             margin-bottom: 1.5rem;
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--text-main);
         }
         .footer-contact a {
@@ -225,28 +229,23 @@
             border-bottom: 1px solid var(--text-main);
             padding-bottom: 1px;
         }
-        .footer-contact a:hover {
-            color: var(--text-muted);
-            border-bottom-color: var(--text-muted);
-        }
     </style>
 </head>
 <body>
 
-       <!-- Sticky Navigation Wrapper: Stays locked at top screen edge on scroll -->
-    <div id="top-anchor" class="section-target" style="scroll-margin-top: 0;"></div>
+    <!-- Unified UI Navigation Matrix -->
     <div class="sticky-nav-wrapper">
         <nav id="main-nav">
-            <a href="#top-anchor" id="nav-portfolio" class="active">Portfolio</a>
-            <a href="#blog-section" id="nav-blog">Research Log</a>
-            <a href="#contact-section" id="nav-contact">Contact</a>
+            <a href="#hero-top" id="nav-portfolio" class="active">Portfolio</a>
+            <a href="#research-target" id="nav-research">Research</a>
+            <a href="#contact-target" id="nav-contact">Contact</a>
         </nav>
     </div>
 
-
-    <header>
+    <!-- The Absolute Top Global Element -->
+    <header id="hero-top" class="section-anchor">
         <div style="width: 100%; height: 280px; border-radius: 12px; overflow: hidden; margin-bottom: 2.5rem; border: 1px solid var(--border-clean);">
-            <img src="hero_landscape.jpg" alt="Research Workspace Environment" style="width: 100%; height: 100%; object-fit: cover; opacity: 1.0;">
+            <img src="hero_landscape.jpg" alt="Research Workspace" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         
         
@@ -257,16 +256,16 @@
             </p>
         </div>
     </header>
-        <main>
-        <!-- PORTFOLIO MATRIX -->
-        <section>
+    <main>
+        <!-- MASTER UNIFIED RESEARCH BLOCK ENVELOPE -->
+        <div id="research-target" class="section-anchor">
+            
             <h2>Software Suites & Code Architecture</h2>
             <div class="pictorial-matrix">
-
                 
-                <!-- Card A -->
+                <!-- Card 1 -->
                 <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
-                    <div class="matrix-card" style="width: 100%; flex-grow: 1;">
+                    <div class="matrix-card">
                         <div class="card-canvas" style="background: linear-gradient(135deg, #141416 0%, #2c2c2e 100%);">
                             [ \partial \rho / \partial t ]<br>1D_HYDRO_SOLVER_V1
                         </div>
@@ -278,9 +277,9 @@
                     </div>
                 </a>
 
-                <!-- Card B -->
+                <!-- Card 2 -->
                 <a href="lbv_review.pdf" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
-                    <div class="matrix-card" style="width: 100%; flex-grow: 1;">
+                    <div class="matrix-card">
                         <div class="card-canvas" style="background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%);">
                             DOCUMENT_MATRIX<br>LBV_REVIEW_PDF
                         </div>
@@ -292,9 +291,9 @@
                     </div>
                 </a>
 
-                <!-- Card C -->
+                <!-- Card 3 -->
                 <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
-                    <div class="matrix-card" style="width: 100%; flex-grow: 1;">
+                    <div class="matrix-card">
                         <div class="card-canvas" style="background: linear-gradient(135deg, #1c1c1e 0%, #3a3a3c 100%);">
                             DATA_PIPELINE<br>TREND_FILTERS
                         </div>
@@ -305,16 +304,41 @@
                         </div>
                     </div>
                 </a>
+
+                <!-- Card 4 (Height Addition) -->
+                <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
+                    <div class="matrix-card">
+                        <div class="card-canvas" style="background: linear-gradient(135deg, #3a3a3c 0%, #141416 100%);">
+                            CFL_TRACKER<br>TIME_STEPPING_v2
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title">Dynamic-CFL-Stability-Module</div>
+                            <p class="card-desc">A plug-in calculation wrapper built to dynamically vary numerical time-steps across transient shocks, preventing zero-division errors during code execution.</p>
+                            <div class="card-tag">Python / Numerical Math</div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 5 (Height Addition) -->
+                <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
+                    <div class="matrix-card">
+                        <div class="card-canvas" style="background: linear-gradient(135deg, #2c2c2e 0%, #444446 100%);">
+                            OPACITY_GRID<br>INTEGRATION_M1
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title">Line-Driven-Opacity-Lookup</div>
+                            <p class="card-desc">An optimized parsing index mapped to quickly read radiation force multipliers and opacity thresholds within dense stellar winds.</p>
+                            <div class="card-tag">Fortran / Data Mapping</div>
+                        </div>
+                    </div>
+                </a>
                 
             </div>
-        </section>
 
-        <!-- RESEARCH LOG SECTION -->
-        <section id="blog-section" class="section-target">
             <h2>Research Journal Logs</h2>
             <div class="editorial-stream">
                 
-                <!-- Log Entry 04 -->
+                <!-- Entry 04 -->
                 <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: block;">
                     <div class="editorial-row">
                         <div class="editorial-main">
@@ -327,7 +351,7 @@
                     </div>
                 </a>
 
-                <!-- Log Entry 03 -->
+                <!-- Entry 03 -->
                 <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: block;">
                     <div class="editorial-row">
                         <div class="editorial-main">
@@ -340,29 +364,45 @@
                     </div>
                 </a>
 
+                <!-- Entry 02 (Height Addition) -->
+                <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="editorial-row">
+                        <div class="editorial-main">
+                            <div class="editorial-title">Parameter Boundary Failures in 1D Ideal Fluid Codes</div>
+                            <p class="editorial-snippet">A deep diagnostic log mapping how spatial cell resolution scales up noise propagation if boundaries are treated as rigid walls rather than radiating zones.</p>
+                        </div>
+                        <div class="editorial-side">
+                            <div>02 MAY 2026</div>
+                        </div>
+                    </div>
+                </a>
+
             </div>
-        </section>
-    </main>
-
-    <!-- FOOTER ARCHITECTURE WITH INTEGRATED CONTACT AND METRICS -->
-    <footer id="contact-section" class="section-target">
-        <div class="footer-contact">
-            Academic Inquiries: <a href="mailto:your.username@university.edu">your.username@university.edu</a>
         </div>
-        <p>&copy; 2026. All rights reserved. | Computational Astrophysics Portfolio</p>
-        <p style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.7;">Hosted via <a href="https://github.com" style="color: inherit; text-decoration: underline;">GitHub Pages</a></p>
-    </footer>
+    </main>
+    <!-- SEPARATION BUFFER & CONTACT AREA -->
+    <!-- The padding-bottom creates the scrolling headroom so the page can lift fully -->
+    <div style="padding-top: 15rem; padding-bottom: 25rem;">
+        <footer id="contact-target" class="section-anchor">
+            <div class="footer-contact">
+                Academic Inquiries: <a href="mailto:your.username@university.edu">your.username@university.edu</a>
+            </div>
+            <p>&copy; 2026. All rights reserved. | Computational Astrophysics Portfolio</p>
+            <p style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.7;">Hosted via <a href="https://github.com" style="color: inherit; text-decoration: underline;">GitHub Pages</a></p>
+        </footer>
+    </div>
 
-    <!-- Script Room: Coordinates alignment and underline movements on viewport entry -->
+    <!-- ADVANCED HIGH-PRECISION TRACKING ENGINE -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.section-target');
+            const sections = document.querySelectorAll('.section-anchor');
             const navLinks = document.querySelectorAll('#main-nav a');
 
+            // High accuracy viewport tracking setup
             const observerOptions = {
                 root: null,
-                rootMargin: '-15% 0px -45% 0px',
-                threshold: 0
+                rootMargin: '-10% 0px -50% 0px',
+                threshold: 0.05
             };
 
             const observer = new IntersectionObserver((entries) => {
