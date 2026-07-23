@@ -3,52 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sandipan's Portfolio</title>
+    <title>Stellar Hydrodynamics Workspace // Research Portfolio</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 2rem; background-color: #f8f9fa; }
-        header { border-bottom: 3px solid #111111; padding-bottom: 1.5rem; margin-bottom: 2rem; }
-        h1 { margin: 0; font-size: 2.5rem; color: #111111; font-weight: 700; }
-        h2 { color: #111111; border-bottom: 1px solid #ddd; padding-bottom: 0.3rem; margin-top: 2.5rem; }
-        .subtitle { font-size: 1.2rem; color: #555; margin-top: 0.5rem; font-style: italic; }
-        .card { background: #fff; border: 1px solid #e1e4e8; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-        .card-title { font-weight: bold; font-size: 1.3rem; color: #111; margin-bottom: 0.3rem; }
-        .tags { font-size: 0.8rem; color: #111111; background: #f0f0f0; padding: 0.2rem 0.6rem; border-radius: 4px; display: inline-block; margin-bottom: 1rem; font-family: monospace; font-weight: bold; }
-        footer { margin-top: 5rem; text-align: center; font-size: 0.85rem; color: #666; border-top: 1px solid #ddd; padding-top: 1.5rem; }
-        a { color: #0056b3; text-decoration: none; font-weight: 500; }
-        a:hover { text-decoration: underline; }
+        /* Psych-UX Rule: 60-30-10 Color Theory. 
+           60% Dominant Canvas (Ultra-clean off-white reduces optical fatigue)
+           30% Structural Architecture (Deep ink anthracite provides cognitive stability)
+           10% Intentional Accent (Sharp structural borders isolate data points) */
+        :root {
+            --bg-primary: #fbfbfd;
+            --text-main: #1d1d1f;
+            --text-muted: #515154;
+            --border-clean: #e5e5ea;
+            --card-surface: #ffffff;
+            --accent-glow: #000000;
+        }
+
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif; 
+            line-height: 1.5; 
+            color: var(--text-main); 
+            background-color: var(--bg-primary); 
+            max-width: 960px; 
+            margin: 0 auto; 
+            padding: 3rem 2rem;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Gestalt Law of Proximity: Clean group anchors eliminate scanning clutter */
+        header { 
+            margin-bottom: 5rem; 
+        }
+        
+        nav { 
+            margin-bottom: 3.5rem; 
+            font-size: 0.85rem; 
+            font-weight: 600; 
+            letter-spacing: 1px; 
+            text-transform: uppercase;
+        }
+        nav a { color: var(--text-muted); margin-right: 2rem; text-decoration: none; transition: color 0.2s ease; }
+        nav a.active { color: var(--text-main); border-bottom: 1.5px solid var(--text-main); padding-bottom: 4px; }
+        nav a:hover { color: var(--text-main); }
+        
+        /* Miller's Law (Chunking): Isolating the primary anchor for maximum processing speed */
+        .identity-banner {
+            max-width: 720px;
+        }
+        h1 { 
+            font-size: 3.2rem; 
+            font-weight: 700; 
+            letter-spacing: -1px; 
+            margin: 0 0 0.5rem 0; 
+            line-height: 1.1;
+        }
+        .identity-sub { 
+            font-size: 1.4rem; 
+            font-weight: 400; 
+            color: var(--text-muted); 
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.2px;
+        }
+        .identity-bio { 
+            font-size: 1.15rem; 
+            color: var(--text-main); 
+            font-weight: 400;
+            letter-spacing: -0.1px;
+        }
+
+        /* Dual-Coding Theory: Section tags use strict uppercase structural spacing */
+        h2 { 
+            font-size: 0.85rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            color: var(--text-muted);
+            margin-top: 6rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-clean);
+            padding-bottom: 0.75rem;
+        }
+
+        /* F-Shaped Scanning Layout: Grids map left-to-right to align with human reading patterns */
+        .pictorial-matrix { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); 
+            gap: 2rem; 
+        }
+        
+        .matrix-card { 
+            background: var(--card-surface); 
+            border: 1px solid var(--border-clean); 
+            border-radius: 12px; 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); /* Premium micro-interaction ease */
+        }
+        
+        /* Von Restorff Effect: Interactive cards lift elegantly on micro-hover */
+        .matrix-card:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04); 
+            border-color: #d2d2d7;
+        }
+        
+        /* The Pictorial Canvas: Designed for your simulation data charts or blueprints */
+        .card-canvas { 
+            height: 160px; 
+            background: #111112; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: #aeaeab; 
+            font-family: monospace; 
+            font-size: 0.8rem; 
+            letter-spacing: 1px; 
+            padding: 1.5rem; 
+            text-align: center; 
+            border-bottom: 1px solid var(--border-clean);
+        }
+        
+        .card-body { 
+            padding: 1.5rem; 
+            flex-grow: 1; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        .card-title { 
+            font-size: 1.25rem; 
+            font-weight: 600; 
+            margin-bottom: 0.5rem; 
+            letter-spacing: -0.2px;
+        }
+        .card-title a { color: var(--text-main); text-decoration: none; }
+        .card-desc { 
+            font-size: 0.95rem; 
+            color: var(--text-muted); 
+            margin-bottom: 1.5rem; 
+            flex-grow: 1; 
+        }
+        .card-tag { 
+            font-family: monospace; 
+            font-size: 0.7rem; 
+            color: var(--text-main); 
+            background: #f5f5f7; 
+            padding: 0.3rem 0.6rem; 
+            border-radius: 6px; 
+            align-self: flex-start; 
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Editorial Linear Sequence: Keeps deep-reading notes highly scannable */
+        .editorial-stream { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 1.5rem; 
+        }
+        .editorial-row { 
+            background: var(--card-surface); 
+            border: 1px solid var(--border-clean); 
+            border-radius: 12px; 
+            padding: 1.75rem; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+            gap: 3rem; 
+        }
+        .editorial-main { max-width: 75%; }
+        .editorial-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: -0.1px; }
+        .editorial-title a { color: var(--text-main); text-decoration: none; }
+        .editorial-title a:hover { color: var(--text-muted); }
+        .editorial-snippet { font-size: 0.95rem; color: var(--text-muted); margin: 0; }
+        .editorial-side { text-align: right; font-family: monospace; font-size: 0.8rem; color: #86868b; white-space: nowrap; }
+
+        footer { 
+            margin-top: 8rem; 
+            text-align: center; 
+            font-size: 0.8rem; 
+            color: #86868b; 
+            border-top: 1px solid var(--border-clean); 
+            padding-top: 2rem; 
+            font-family: monospace;
+            letter-spacing: 0.5px;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Sandipan Halder</h1>
-        <div class="subtitle">M.Sc. Physics Student </div>
+        <nav>
+            <a href="index.html" class="active">Portfolio</a>
+            <a href="blog.html">Research Log</a>
+        </nav>
+        
+        <!-- Priming Effect: Clear bold positioning establishes domain expertise immediately -->
+        
+            <h1>Your Name</h1>
+            Computational Astrophysics Graduate Student</div>
+            
+                I specialize in fluid mechanics, stellar wind hydrodynamics, and computational data processing. My current master's framework evaluates boundary layer stability and mass-loss parameter configurations for Luminous Blue Variable environments.
+            </p>
+        </div>
     </header>
 
-    <section id="about">
-        <h2>Astrophysics/Cosmology</h2>
-        <p>Welcome to my research dashboard. I specialize in stellar evolutionary pathways, fluid mechanics, and computational astrophysics. My current work centers on the parameter limits, mass-loss boundaries, and structural hydrodynamics of Luminous Blue Variable (LBV) stellar environments.</p>
-    </section>
+    <main>
+        <!-- SECTION 1: PICTORIAL GRID -->
+        <h2>Software Suites & Code Architecture</h2>
+        <div class="pictorial-matrix">
+            
+            <!-- Card A: 1D Solver -->
+            <div class="matrix-card">
+                <!-- Visual Box: High-contrast layout optimized for a chart image later -->
+                <div class="card-canvas" style="background: linear-gradient(135deg, #141416 0%, #2c2c2e 100%);">
+                    [ \partial \rho / \partial t ]<br>1D_HYDRO_SOLVER_V1
+                </div>
+                <div class="card-body">
+                    <div class="card-title"><a href="#">1D-Stellar-Hydrodynamics</a></div>
+                    <p class="card-desc">A finite-volume fluid dynamics numerical solver configured in Python to compute 1D mass conservation profiles and trace shocks along circumstellar boundaries.</p>
+                    <div class="card-tag">Python / Finite-Volume</div>
+                </div>
+            </div>
 
-    <section id="portfolio">
-        <h2>Academic & Software Engineering Projects</h2>
-        
-        <div class="card">
-            <div class="card-title">1D Hydrodynamic Stellar Wind Simulator</div>
-            <div class="tags">Python / Finite-Volume / Fluid Dynamics</div>
-            <p>A native numerical solver configured to compute mass, momentum, and energy conservation across evolving wind frontiers. Features integrated stability tracking to isolate macro-trends from high-frequency numerical grid noise.</p>
-        </div>
+            <!-- Card B: TeX Manuscript (Serial Position Effect: High Value Item Placement) -->
+            <div class="matrix-card">
+                <div class="card-canvas" style="background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%);">
+                    DOCUMENT_MATRIX<br>LBV_REVIEW_PDF
+                </div>
+                <div class="card-body">
+                    <div class="card-title"><a href="lbv_review.pdf" target="_blank">LBV-Winds-Literature-Review</a></div>
+                    <p class="card-desc">A formal academic review tracking parameters like cooling factor and CFL stability across historical single-star wind models.</p>
+                    <div class="card-tag">LaTeX / Manuscript</div>
+                </div>
+            </div>
 
-        <div class="card">
-            <div class="card-title">A Critical Review of 1D Hydrodynamic Simulations for LBV Winds</div>
-            <div class="tags">LaTeX / Manuscript / Literature Review</div>
-            <p>An academic overview evaluating historical boundary mechanics and cooling threshold criteria used in stellar wind profiling. Contrasts standard spherical approximations against observed multi-dimensional asymmetric nebula structures.</p>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Your Name | Powered by GitHub Pages</p>
-    </footer>
-
-</body>
-</html>
+            <!-- Card C: Data Analytics -->
+            <div class="matrix-card">
+                <div class="card-canvas" style="background: linear-gradient(135deg, #1c1c1e 0%, #3a3a3c 100%);">
+                    DATA_PIPELINE<br>TREND_FILTERS
+                </div>
+                <div class="card-body">
+                    <div class="card-title"><a href="#">Stellar-Data-Processing-Suite</a></div>
+                    <p class="card-desc">A post-processing automation suite utilizing rolling baseline trend filters and smoothing masks to isolate simulation macro-trends.</p>
+                    <div class="card-tag">Python / NumPy / Pandas</div>
+                </div>
