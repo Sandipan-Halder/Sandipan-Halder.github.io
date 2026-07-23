@@ -1,6 +1,5 @@
-# Disables default styling overwrites to protect your custom html
+# Disables the default engine theme overrides completely
 theme: []
 
-collections:
-  projects:
-    output: true
+# Tells the server to read your local folder structure as raw files
+include: [index.html, _layouts, _posts]
