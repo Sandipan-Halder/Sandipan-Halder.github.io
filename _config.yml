@@ -1,0 +1,6 @@
+# Disables default styling overwrites to protect your custom html
+theme: []
+
+collections:
+  projects:
+    output: true
