@@ -1,7 +1,0 @@
-# Tells Jekyll to drop all default theme blocks and run your custom design
-theme: []
-
-collections:
-  projects:
-    output: true
-
