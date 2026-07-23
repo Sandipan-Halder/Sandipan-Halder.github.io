@@ -14,6 +14,11 @@
             --card-surface: #ffffff;
         }
 
+        /* Psych-UX Rule: Enable smooth scrolling animation natively in browser loops */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif; 
             line-height: 1.5; 
@@ -21,24 +26,51 @@
             background-color: var(--bg-primary); 
             max-width: 960px; 
             margin: 0 auto; 
-            padding: 3rem 2rem;
+            padding: 0 2rem 3rem 2rem;
             -webkit-font-smoothing: antialiased;
         }
 
-        header { 
-            margin-bottom: 5rem; 
+        /* Professional UX Pattern: Fixed Sticky Header with dynamic tracking background */
+        .sticky-nav-wrapper {
+            position: sticky;
+            top: 0;
+            background-color: rgba(251, 251, 253, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-clean);
+            margin: 0 -2rem 3rem -2rem;
+            padding: 1.5rem 2rem;
         }
         
         nav { 
-            margin-bottom: 3.5rem; 
             font-size: 0.85rem; 
             font-weight: 600; 
             letter-spacing: 1px; 
             text-transform: uppercase;
+            display: flex;
+            gap: 2rem;
         }
-        nav a { color: var(--text-muted); margin-right: 2rem; text-decoration: none; transition: color 0.2s ease; }
-        nav a.active { color: var(--text-main); border-bottom: 1.5px solid var(--text-main); padding-bottom: 4px; }
-        nav a:hover { color: var(--text-main); }
+        nav a { 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); 
+            padding-bottom: 6px;
+            border-bottom: 2px solid transparent;
+        }
+        /* Dynamic Slider: Active states shift lines seamlessly via JavaScript */
+        nav a.active { 
+            color: var(--text-main); 
+            border-bottom-color: var(--text-main); 
+        }
+        nav a:hover { 
+            color: var(--text-main); 
+        }
+        
+        header { 
+            margin-bottom: 4rem; 
+            padding-top: 1rem;
+        }
         
         .identity-banner {
             max-width: 720px;
@@ -64,13 +96,18 @@
             letter-spacing: -0.1px;
         }
 
+        /* Targets for dynamic scrolling offsets to prevent sticky menu coverups */
+        .section-target {
+            scroll-margin-top: 6rem;
+        }
+
         h2 { 
             font-size: 0.85rem; 
             font-weight: 700; 
             text-transform: uppercase; 
             letter-spacing: 2px; 
             color: var(--text-muted);
-            margin-top: 6rem;
+            margin-top: 5rem;
             margin-bottom: 2rem;
             border-bottom: 1px solid var(--border-clean);
             padding-bottom: 0.75rem;
@@ -98,7 +135,6 @@
             border-color: #d2d2d7;
         }
         
-        /* Thumbnail Container: Grayscale removed completely. Supports pure color data charts */
         .card-canvas { 
             height: 160px; 
             display: flex; 
@@ -125,7 +161,6 @@
             margin-bottom: 0.5rem; 
             letter-spacing: -0.2px;
         }
-        .card-title a { color: var(--text-main); text-decoration: none; }
         .card-desc { 
             font-size: 0.95rem; 
             color: var(--text-muted); 
@@ -158,11 +193,15 @@
             justify-content: space-between; 
             align-items: flex-start; 
             gap: 3rem; 
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .editorial-row:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+            border-color: #d2d2d7;
         }
         .editorial-main { max-width: 75%; }
         .editorial-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: -0.1px; }
-        .editorial-title a { color: var(--text-main); text-decoration: none; }
-        .editorial-title a:hover { color: var(--text-muted); }
         .editorial-snippet { font-size: 0.95rem; color: var(--text-muted); margin: 0; }
         .editorial-side { text-align: right; font-family: monospace; font-size: 0.8rem; color: #86868b; white-space: nowrap; }
 
@@ -180,104 +219,112 @@
 </head>
 <body>
 
-    <header>
-        <nav>
-            <a href="index.html" class="active">Portfolio</a>
-            <a href="blog.html">Research Log</a>
+    <!-- Sticky Navigation Wrapper: Stays locked at top screen edge on scroll -->
+    <div class="sticky-nav-wrapper">
+        <nav id="main-nav">
+            <a href="#portfolio-section" id="nav-portfolio" class="active">Portfolio</a>
+            <a href="#blog-section" id="nav-blog">Research Log</a>
         </nav>
-        
-        <!-- Full-Color Wide Visual Anchor Frame -->
+    </div>
+
+    <header>
+        <!-- Full-Color Wide Visual Banner Container -->
         <div style="width: 100%; height: 280px; border-radius: 12px; overflow: hidden; margin-bottom: 2.5rem; border: 1px solid var(--border-clean);">
             <img src="hero_landscape.jpg" alt="Research Workspace Environment" style="width: 100%; height: 100%; object-fit: cover; opacity: 1.0;">
         </div>
         
         
-            <h1>Sandipan Halder</h1>
-            Computational Astrophysics Graduate Student</div>
+            <h1>Your Name</h1>
+            Computational Astrophysics Postgraduate Student</div>
             
                 I specialize in fluid mechanics, stellar wind hydrodynamics, and computational data processing. My current master's framework evaluates boundary layer stability and mass-loss parameter configurations for Luminous Blue Variable environments.
             </p>
         </div>
     </header>
+    <main>
+        <!-- PORTFOLIO SECTION ENVELOPE -->
+        <section id="portfolio-section" class="section-target">
+            <h2>Software Suites & Code Architecture</h2>
+            <div class="pictorial-matrix">
+                
+                <!-- Card A: Full-Box Project Link -->
+                <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
+                    <div class="matrix-card" style="width: 100%; flex-grow: 1;">
+                        <div class="card-canvas" style="background: linear-gradient(135deg, #141416 0%, #2c2c2e 100%);">
+                            [ \partial \rho / \partial t ]<br>1D_HYDRO_SOLVER_V1
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title">1D-Stellar-Hydrodynamics</div>
+                            <p class="card-desc">A finite-volume fluid dynamics numerical solver configured in Python to compute 1D mass conservation profiles and trace shocks along circumstellar boundaries.</p>
+                            <div class="card-tag">Python / Finite-Volume</div>
+                        </div>
+                    </div>
+                </a>
 
-           <main>
-        <h2>Software Suites & Code Architecture</h2>
-        <div class="pictorial-matrix">
-            
-            <!-- Card A: Whole Box Links to blog.html -->
-            <a href="blog.html" style="text-decoration: none; color: inherit; display: flex;">
-                <div class="matrix-card" style="width: 100%; flex-grow: 1;">
-                    <div class="card-canvas" style="background: linear-gradient(135deg, #141416 0%, #2c2c2e 100%);">
-                        [ \partial \rho / \partial t ]<br>1D_HYDRO_SOLVER_V1
+                <!-- Card B: Full-Box Manuscript Link -->
+                <a href="lbv_review.pdf" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
+                    <div class="matrix-card" style="width: 100%; flex-grow: 1;">
+                        <div class="card-canvas" style="background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%);">
+                            DOCUMENT_MATRIX<br>LBV_REVIEW_PDF
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title">LBV-Winds-Literature-Review</div>
+                            <p class="card-desc">A formal academic review tracking parameters like cooling factor and CFL stability across historical single-star wind models.</p>
+                            <div class="card-tag">LaTeX / Manuscript</div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <div class="card-title">1D-Stellar-Hydrodynamics</div>
-                        <p class="card-desc">A finite-volume fluid dynamics numerical solver configured in Python to compute 1D mass conservation profiles and trace shocks along circumstellar boundaries.</p>
-                        <div class="card-tag">Python / Finite-Volume</div>
-                    </div>
-                </div>
-            </a>
+                </a>
 
-            <!-- Card B: Whole Box Links to lbv_review.pdf -->
-            <a href="lbv_review.pdf" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
-                <div class="matrix-card" style="width: 100%; flex-grow: 1;">
-                    <div class="card-canvas" style="background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%);">
-                        DOCUMENT_MATRIX<br>LBV_REVIEW_PDF
+                <!-- Card C: Full-Box Processing Suite Link -->
+                <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
+                    <div class="matrix-card" style="width: 100%; flex-grow: 1;">
+                        <div class="card-canvas" style="background: linear-gradient(135deg, #1c1c1e 0%, #3a3a3c 100%);">
+                            DATA_PIPELINE<br>TREND_FILTERS
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title">Stellar-Data-Processing-Suite</div>
+                            <p class="card-desc">A post-processing automation suite utilizing rolling baseline trend filters and smoothing masks to isolate simulation macro-trends.</p>
+                            <div class="card-tag">Python / NumPy / Pandas</div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <div class="card-title">LBV-Winds-Literature-Review</div>
-                        <p class="card-desc">A formal academic review tracking parameters like cooling factor and CFL stability across historical single-star wind models.</p>
-                        <div class="card-tag">LaTeX / Manuscript</div>
-                    </div>
-                </div>
-            </a>
+                </a>
+                
+            </div>
+        </section>
 
-            <!-- Card C: Whole Box Links to blog.html -->
-            <a href="blog.html" style="text-decoration: none; color: inherit; display: flex;">
-                <div class="matrix-card" style="width: 100%; flex-grow: 1;">
-                    <div class="card-canvas" style="background: linear-gradient(135deg, #1c1c1e 0%, #3a3a3c 100%);">
-                        DATA_PIPELINE<br>TREND_FILTERS
+        <!-- BLOG / RESEARCH LOG SECTION ENVELOPE -->
+        <section id="blog-section" class="section-target">
+            <h2>Research Journal Logs</h2>
+            <div class="editorial-stream">
+                
+                <!-- Log Entry 04: Full-Row External Link -->
+                <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="editorial-row">
+                        <div class="editorial-main">
+                            <div class="editorial-title">Isolating Simulation Macro-Evolution from Grid Shocks</div>
+                            <p class="editorial-snippet">An analysis of why dynamic center-moving window filters are crucial to isolate major thermodynamic boundaries from high-frequency numerical logging spikes during long simulation loops.</p>
+                        </div>
+                        <div class="editorial-side">
+                            <div>23 JUL 2026</div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <div class="card-title">Stellar-Data-Processing-Suite</div>
-                        <p class="card-desc">A post-processing automation suite utilizing rolling baseline trend filters and smoothing masks to isolate simulation macro-trends.</p>
-                        <div class="card-tag">Python / NumPy / Pandas</div>
-                    </div>
-                </div>
-            </a>
-            
-        </div> <!-- Closes the pictorial matrix grid cleanly -->
+                </a>
 
-        <h2>Research Journal Logs</h2>
-        <div class="editorial-stream">
-            
-            <!-- Log Entry 04: Whole Row Links to blog.html -->
-            <a href="blog.html" style="text-decoration: none; color: inherit; display: block;">
-                <div class="editorial-row">
-                    <div class="editorial-main">
-                        <div class="editorial-title">Isolating Simulation Macro-Evolution from Grid Shocks</div>
-                        <p class="editorial-snippet">An analysis of why dynamic center-moving window filters are crucial to isolate major thermodynamic boundaries from high-frequency numerical logging spikes during long simulation loops.</p>
+                <!-- Log Entry 03: Full-Row External Link -->
+                <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="editorial-row">
+                        <div class="editorial-main">
+                            <div class="editorial-title">Numerical Divergence Criteria in Non-Adiabatic Environments</div>
+                            <p class="editorial-snippet">Reviewing why matrix calculation pipelines divide by zero when boundary velocities cross local sonic speed walls without an active temporal dampener enabled.</p>
+                        </div>
+                        <div class="editorial-side">
+                            <div>14 JUN 2026</div>
+                        </div>
                     </div>
-                    <div class="editorial-side">
-                        <div>23 JUL 2026</div>
-                    </div>
-                </div>
-            </a>
+                </a>
 
-            <!-- Log Entry 03: Whole Row Links to blog.html -->
-            <a href="blog.html" style="text-decoration: none; color: inherit; display: block;">
-                <div class="editorial-row">
-                    <div class="editorial-main">
-                        <div class="editorial-title">Numerical Divergence Criteria in Non-Adiabatic Environments</div>
-                        <p class="editorial-snippet">Reviewing why matrix calculation pipelines divide by zero when boundary velocities cross local sonic speed walls without an active temporal dampener enabled.</p>
-                    </div>
-                    <div class="editorial-side">
-                        <div>14 JUN 2026</div>
-                    </div>
-                </div>
-            </a>
-
-        </div> <!-- Closes the editorial-stream layout -->
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -285,6 +332,36 @@
         <p style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.75;">Hosted via <a href="https://github.com" style="color: inherit; text-decoration: underline;">GitHub Pages</a></p>
     </footer>
 
+    <!-- Intersection Observer Script: Tracks page scrolling position dynamically -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section-target');
+            const navLinks = document.querySelectorAll('#main-nav a');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const activeId = entry.target.getAttribute('id');
+                        
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === '#' + activeId) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+
 </body>
 </html>
-
