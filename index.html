@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stellar Hydrodynamics Workspace // Research Portfolio</title>
     <style>
-        /* Psych-UX Rule: 60-30-10 Color Architecture */
+        /* 60-30-10 Color Architecture with Technical Accents */
         :root {
             --bg-primary: #fbfbfd;
             --text-main: #1d1d1f;
             --text-muted: #515154;
             --border-clean: #e5e5ea;
+            --border-dark: #1d1d1f;
             --card-surface: #ffffff;
+            --accent-grid: rgba(29, 29, 31, 0.03);
         }
 
-        /* Hardcode smooth physics scaling across all view shifts */
         html {
             scroll-behavior: smooth;
         }
@@ -30,7 +31,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* FIXED STICKY NAVIGATION HEADER WITH PREMIUM MICRO-EASE */
+        /* PREMIUM GUI STICKY NAV LAYER */
         .sticky-nav-wrapper {
             position: sticky;
             top: 0;
@@ -57,7 +58,6 @@
             text-decoration: none; 
             padding-bottom: 6px;
             border-bottom: 2px solid transparent;
-            /* Cubic bezier matching Apple desktop UI system curves */
             transition: color 0.25s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.25s cubic-bezier(0.25, 1, 0.5, 1);
         }
         
@@ -65,7 +65,6 @@
             color: var(--text-main); 
         }
 
-        /* Smooth dynamic sliding active accent rule */
         nav a.active {
             color: var(--text-main);
             border-bottom-color: var(--text-main);
@@ -100,7 +99,6 @@
             letter-spacing: -0.1px;
         }
 
-        /* Strict geometric offset rule to account for fixed bar elevation profile */
         .section-anchor {
             scroll-margin-top: 7rem;
         }
@@ -117,6 +115,7 @@
             padding-bottom: 0.75rem;
         }
 
+        /* PICTORIAL MATRIX EXPANSION */
         .pictorial-matrix { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); 
@@ -137,22 +136,51 @@
         
         .matrix-card:hover { 
             transform: translateY(-4px); 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.04); 
-            border-color: #d2d2d7;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.06); 
+            border-color: var(--border-dark);
         }
         
+        /* Technical Visual Canvas: Replaced flat gradients with a blueprint mesh pattern */
         .card-canvas { 
             height: 160px; 
             display: flex; 
+            flex-direction: column;
             align-items: center; 
             justify-content: center; 
             color: #ffffff; 
-            font-family: monospace; 
-            font-size: 0.8rem; 
+            font-family: "Courier New", Courier, monospace; 
+            font-size: 0.75rem; 
             letter-spacing: 1px; 
             padding: 1.5rem; 
             text-align: center; 
             border-bottom: 1px solid var(--border-clean);
+            position: relative;
+            background-size: 20px 20px;
+            background-image: linear-gradient(to right, var(--accent-grid) 1px, transparent 1px),
+                              linear-gradient(to bottom, var(--accent-grid) 1px, transparent 1px);
+        }
+
+        /* Technical UI watermarks sitting inside the image boxes */
+        .canvas-spec {
+            position: absolute;
+            bottom: 8px;
+            right: 12px;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            opacity: 0.6;
+            font-family: monospace;
+        }
+
+        .canvas-status {
+            position: absolute;
+            top: 10px;
+            left: 12px;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
         }
         
         .card-body { 
@@ -173,18 +201,26 @@
             margin-bottom: 1.5rem; 
             flex-grow: 1; 
         }
+
+        /* Tag Pill Badges */
+        .card-tag-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
         .card-tag { 
             font-family: monospace; 
-            font-size: 0.7rem; 
+            font-size: 0.65rem; 
             color: var(--text-main); 
             background: #f5f5f7; 
             padding: 0.3rem 0.6rem; 
             border-radius: 6px; 
-            align-self: flex-start; 
             font-weight: 600;
             text-transform: uppercase;
+            border: 1px solid var(--border-clean);
         }
 
+        /* EDITORIAL STREAM REFINEMENT */
         .editorial-stream { 
             display: flex; 
             flex-direction: column; 
@@ -197,19 +233,31 @@
             padding: 1.75rem; 
             display: flex; 
             justify-content: space-between; 
-            align-items: flex-start; 
+            align-items: center; 
             gap: 3rem; 
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .editorial-row:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
-            border-color: #d2d2d7;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border-color: var(--border-dark);
         }
         .editorial-main { max-width: 75%; }
         .editorial-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: -0.1px; }
         .editorial-snippet { font-size: 0.95rem; color: var(--text-muted); margin: 0; }
         .editorial-side { text-align: right; font-family: monospace; font-size: 0.8rem; color: #86868b; white-space: nowrap; }
+
+        .blog-badge {
+            font-family: monospace;
+            font-size: 0.65rem;
+            background: #1d1d1f;
+            color: #fff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 8px;
+            vertical-align: middle;
+            display: inline-block;
+        }
 
         footer { 
             text-align: center; 
@@ -232,32 +280,6 @@
         }
     </style>
 </head>
-<body>
-
-    <!-- HIGH-INTERACTION NAVIGATION BAR LAYOUT -->
-    <div class="sticky-nav-wrapper">
-        <nav id="main-nav">
-            <a href="#hero-top" id="nav-portfolio" class="active">Portfolio</a>
-            <a href="#research-target" id="nav-research">Research</a>
-            <a href="#contact-target" id="nav-contact">Contact</a>
-        </nav>
-    </div>
-
-    <!-- MAIN IDENTITY WRAPPER -->
-    <header id="hero-top" class="section-anchor">
-        <div style="width: 100%; height: 280px; border-radius: 12px; overflow: hidden; margin-bottom: 2.5rem; border: 1px solid var(--border-clean);">
-            <img src="hero_landscape.jpg" alt="Research Workspace" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        
-        
-            <h1>Your Name</h1>
-            Computational Astrophysics Postgraduate Student</div>
-            
-                I specialize in fluid mechanics, stellar wind hydrodynamics, and computational data processing. My current master's framework evaluates boundary layer stability and mass-loss parameter configurations for Luminous Blue Variable environments.
-            </p>
-        </div>
-    </header>
-
     <main>
         <!-- MASTER UNIFIED RESEARCH TARGET ZONE -->
         <div id="research-target" class="section-anchor">
@@ -268,13 +290,20 @@
                 <!-- Card 1 -->
                 <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
                     <div class="matrix-card">
-                        <div class="card-canvas" style="background: linear-gradient(135deg, #141416 0%, #2c2c2e 100%);">
-                            [ \partial \rho / \partial t ]<br>1D_HYDRO_SOLVER_V1
+                        <div class="card-canvas" style="background-color: #141416;">
+                            <div class="canvas-status" style="background: #e3f2fd; color: #0d47a1;">[STABLE]</div>
+                            <span style="color: #64ffda; font-weight: bold;">∂ρ/∂t + ∇·(ρv) = 0</span>
+                            <span style="font-size: 0.65rem; opacity: 0.5; margin-top: 0.5rem;">SOLVER_CORE_V1.py</span>
+                            <div class="canvas-spec">GRID: 30_CELLS // CFL: 0.4</div>
                         </div>
                         <div class="card-body">
                             <div class="card-title">1D-Stellar-Hydrodynamics</div>
                             <p class="card-desc">A finite-volume fluid dynamics numerical solver configured in Python to compute 1D mass conservation profiles and trace shocks along circumstellar boundaries.</p>
-                            <div class="card-tag">Python / Finite-Volume</div>
+                            <div class="card-tag-wrapper">
+                                <span class="card-tag">Python</span>
+                                <span class="card-tag">Finite-Volume</span>
+                                <span class="card-tag">Fluid Solvers</span>
+                            </div>
                         </div>
                     </div>
                 </a>
@@ -282,13 +311,20 @@
                 <!-- Card 2 -->
                 <a href="lbv_review.pdf" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
                     <div class="matrix-card">
-                        <div class="card-canvas" style="background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%);">
-                            DOCUMENT_MATRIX<br>LBV_REVIEW_PDF
+                        <div class="card-canvas" style="background-color: #1c1c1e;">
+                            <div class="canvas-status" style="background: #f1f8ff; color: #0366d6;">[MANUSCRIPT]</div>
+                            <span style="color: #ffb300; font-weight: bold;">📝 LBV_MANUSCRIPT_v2</span>
+                            <span style="font-size: 0.65rem; opacity: 0.5; margin-top: 0.5rem;">pdf-dist-engine</span>
+                            <div class="canvas-spec">FORMAT: PDF-TeXShop</div>
                         </div>
                         <div class="card-body">
                             <div class="card-title">LBV-Winds-Literature-Review</div>
                             <p class="card-desc">A formal academic review tracking parameters like cooling factor and CFL stability across historical single-star wind models.</p>
-                            <div class="card-tag">LaTeX / Manuscript</div>
+                            <div class="card-tag-wrapper">
+                                <span class="card-tag">LaTeX</span>
+                                <span class="card-tag">Review Paper</span>
+                                <span class="card-tag">Stellar Winds</span>
+                            </div>
                         </div>
                     </div>
                 </a>
@@ -296,13 +332,20 @@
                 <!-- Card 3 -->
                 <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
                     <div class="matrix-card">
-                        <div class="card-canvas" style="background: linear-gradient(135deg, #1c1c1e 0%, #3a3a3c 100%);">
-                            DATA_PIPELINE<br>TREND_FILTERS
+                        <div class="card-canvas" style="background-color: #2c2c2e;">
+                            <div class="canvas-status" style="background: #e8f5e9; color: #1b5e20;">[PIPELINE]</div>
+                            <span style="color: #42a5f5; font-weight: bold;">import numpy as np</span>
+                            <span style="font-size: 0.65rem; opacity: 0.5; margin-top: 0.5rem;">post_process_macro.py</span>
+                            <div class="canvas-spec">ENGINE: NUMPY // PANDAS</div>
                         </div>
                         <div class="card-body">
                             <div class="card-title">Stellar-Data-Processing-Suite</div>
                             <p class="card-desc">A post-processing automation suite utilizing rolling baseline trend filters and smoothing masks to isolate simulation macro-trends.</p>
-                            <div class="card-tag">Python / NumPy / Pandas</div>
+                            <div class="card-tag-wrapper">
+                                <span class="card-tag">Python</span>
+                                <span class="card-tag">NumPy</span>
+                                <span class="card-tag">Data Filters</span>
+                            </div>
                         </div>
                     </div>
                 </a>
@@ -310,13 +353,20 @@
                 <!-- Card 4 -->
                 <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
                     <div class="matrix-card">
-                        <div class="card-canvas" style="background: linear-gradient(135deg, #3a3a3c 0%, #141416 100%);">
-                            CFL_TRACKER<br>TIME_STEPPING_v2
+                        <div class="card-canvas" style="background-color: #232325;">
+                            <div class="canvas-status" style="background: #fff3e0; color: #e65100;">[DYNAMIC]</div>
+                            <span style="color: #ff7043; font-weight: bold;">Δt = Min(Δx / |v + c|)</span>
+                            <span style="font-size: 0.65rem; opacity: 0.5; margin-top: 0.5rem;">cfl_tracker_v2.py</span>
+                            <div class="canvas-spec">MATH: TIME-INTEGRATION</div>
                         </div>
                         <div class="card-body">
                             <div class="card-title">Dynamic-CFL-Stability-Module</div>
                             <p class="card-desc">A plug-in calculation wrapper built to dynamically vary numerical time-steps across transient shocks, preventing zero-division errors during code execution.</p>
-                            <div class="card-tag">Python / Numerical Math</div>
+                            <div class="card-tag-wrapper">
+                                <span class="card-tag">Python</span>
+                                <span class="card-tag">Numerical Math</span>
+                                <span class="card-tag">CFL Tracking</span>
+                            </div>
                         </div>
                     </div>
                 </a>
@@ -324,19 +374,25 @@
                 <!-- Card 5 -->
                 <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: flex;">
                     <div class="matrix-card">
-                        <div class="card-canvas" style="background: linear-gradient(135deg, #2c2c2e 0%, #444446 100%);">
-                            OPACITY_GRID<br>INTEGRATION_M1
+                        <div class="card-canvas" style="background-color: #1b1b1d;">
+                            <div class="canvas-status" style="background: #fafafa; color: #212121;">[INDEX]</div>
+                            <span style="color: #ab47bc; font-weight: bold;">LOOKUP_TABLE_M1</span>
+                            <span style="font-size: 0.65rem; opacity: 0.5; margin-top: 0.5rem;">opacity_mesh.f90</span>
+                            <div class="canvas-spec">COMPILED: FORTRAN 90</div>
                         </div>
                         <div class="card-body">
                             <div class="card-title">Line-Driven-Opacity-Lookup</div>
                             <p class="card-desc">An optimized parsing index mapped to quickly read radiation force multipliers and opacity thresholds within dense stellar winds.</p>
-                            <div class="card-tag">Fortran / Data Mapping</div>
+                            <div class="card-tag-wrapper">
+                                <span class="card-tag">Fortran</span>
+                                <span class="card-tag">Data Mapping</span>
+                                <span class="card-tag">Lookup Grids</span>
+                            </div>
                         </div>
                     </div>
                 </a>
                 
-            </div>
-
+            </div> <!-- Closes the pictorial matrix grid cleanly -->
             <h2>Research Journal Logs</h2>
             <div class="editorial-stream">
                 
@@ -344,7 +400,7 @@
                 <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: block;">
                     <div class="editorial-row">
                         <div class="editorial-main">
-                            <div class="editorial-title">Isolating Simulation Macro-Evolution from Grid Shocks</div>
+                            <div class="editorial-title"><span class="blog-badge">LOG_04</span>Isolating Simulation Macro-Evolution from Grid Shocks</div>
                             <p class="editorial-snippet">An analysis of why dynamic center-moving window filters are crucial to isolate major thermodynamic boundaries from high-frequency numerical logging spikes during long simulation loops.</p>
                         </div>
                         <div class="editorial-side">
@@ -357,7 +413,7 @@
                 <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: block;">
                     <div class="editorial-row">
                         <div class="editorial-main">
-                            <div class="editorial-title">Numerical Divergence Criteria in Non-Adiabatic Environments</div>
+                            <div class="editorial-title"><span class="blog-badge">LOG_03</span>Numerical Divergence Criteria in Non-Adiabatic Environments</div>
                             <p class="editorial-snippet">Reviewing why matrix calculation pipelines divide by zero when boundary velocities cross local sonic speed walls without an active temporal dampener enabled.</p>
                         </div>
                         <div class="editorial-side">
@@ -370,7 +426,7 @@
                 <a href="https://github.com" target="_blank" style="text-decoration: none; color: inherit; display: block;">
                     <div class="editorial-row">
                         <div class="editorial-main">
-                            <div class="editorial-title">Parameter Boundary Failures in 1D Ideal Fluid Codes</div>
+                            <div class="editorial-title"><span class="blog-badge">LOG_02</span>Parameter Boundary Failures in 1D Ideal Fluid Codes</div>
                             <p class="editorial-snippet">A deep diagnostic log mapping how spatial cell resolution scales up noise propagation if boundaries are treated as rigid walls rather than radiating zones.</p>
                         </div>
                         <div class="editorial-side">
@@ -382,6 +438,7 @@
             </div>
         </div>
     </main>
+
     <!-- SEPARATION BUFFER & INSTITUTIONAL FOOTER CONTROLLER -->
     <div style="padding-top: 15rem; padding-bottom: 25rem;">
         <footer id="contact-target" class="section-anchor">
@@ -398,20 +455,17 @@
         document.addEventListener('DOMContentLoaded', () => {
             const navLinks = document.querySelectorAll('#main-nav a');
             
-            // Hardcoded section threshold tags
             const topSection = document.getElementById('hero-top');
             const researchSection = document.getElementById('research-target');
             const contactSection = document.getElementById('contact-target');
 
             function updateNavigationUnderline() {
-                // Read exact layout pixel heights relative to the screen roof edge
                 const topRect = topSection.getBoundingClientRect();
                 const researchRect = researchSection.getBoundingClientRect();
                 const contactRect = contactSection.getBoundingClientRect();
 
                 let activeId = 'nav-portfolio';
 
-                // Condition Loop: Evaluates window height to track reverse upward movement flawlessly
                 if (contactRect.top <= window.innerHeight * 0.75 || (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 50) {
                     activeId = 'nav-contact';
                 } else if (researchRect.top <= 140) {
@@ -420,7 +474,6 @@
                     activeId = 'nav-portfolio';
                 }
 
-                // UI Update Loop: Changes lines instantly with no lag
                 navLinks.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('id') === activeId) {
@@ -429,11 +482,8 @@
                 });
             }
 
-            // Bind the calculator directly to the browser window scroll physics
             window.addEventListener('scroll', updateNavigationUnderline, { passive: true });
             window.addEventListener('resize', updateNavigationUnderline, { passive: true });
-            
-            // Run once immediately on launch to establish baseline view configurations
             updateNavigationUnderline();
         });
     </script>
